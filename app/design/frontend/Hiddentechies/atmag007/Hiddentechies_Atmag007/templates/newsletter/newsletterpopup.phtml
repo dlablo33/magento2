@@ -1,0 +1,309 @@
+<?php
+$helper = $this->helper('Hiddentechies\Atmag007\Helper\Data');
+$isHome = $helper->getIsHome();
+$mediaUrl = $helper->getMediaUrl() . 'atmag007/img/';
+$popupEnable = $helper->getConfigValue('themesettings/newsletterpopup/popup_enable');
+$displayOnlyHome = $helper->getConfigValue('themesettings/newsletterpopup/display_only_home');
+$popupImage = $helper->getConfigValue('themesettings/newsletterpopup/popup_image');
+$newsletterTitle = $helper->getConfigValue('themesettings/newsletterpopup/newsletter_title');
+$newsletterText = $helper->getConfigValue('themesettings/newsletterpopup/newsletter_text');
+$popupDelay = $helper->getConfigValue('themesettings/newsletterpopup/popup_delay');
+$popupWidth = $helper->getConfigValue('themesettings/newsletterpopup/popup_width');
+$popupHeight = $helper->getConfigValue('themesettings/newsletterpopup/popup_height');
+$popupBackgroundColor = $helper->getConfigValue('themesettings/newsletterpopup/popup_background_color');
+$popupBackgroundImage = $helper->getConfigValue('themesettings/newsletterpopup/popup_background_image');
+$popupCustomStyle = $helper->getConfigValue('themesettings/newsletterpopup/popup_custom_style');
+?>
+<?php if ($popupEnable) { ?>
+    <?php if ($displayOnlyHome) { ?>
+        <?php if ($isHome) { ?>
+            <div class="display-popup" style="display:none;">
+                <div id="newsletter-popup">
+                    <div class="promotional-popup">
+                        <div class="pop-subscribe">
+                            <form class="form subscribe"
+                                  novalidate
+                                  action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
+                                  method="post"
+                                  data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+                                  id="newsletter-validate-detail">
+                                <div class="w-newsletter">
+                                    <?php if ($popupImage) { ?>
+                                        <div class="image-newsletter hidden-xs">
+                                            <a href="#" >
+                                                <img src="<?php echo $mediaUrl . $popupImage ?>" alt="newsletter-image" />
+                                            </a>
+                                        </div>
+                                    <?php } ?>
+
+                                    <div class="newsletter-info">
+                                        <div class="newsletter-title">
+                                            <h2><?php echo $newsletterTitle; ?></h2>
+                                        </div>
+
+                                        <div class="short-description">
+                                            <p>
+                                                <?php echo $newsletterText; ?>
+                                            </p>
+                                        </div>
+
+                                        <div class="form-newsletter-popup">
+                                            <div class="input-box">
+                                                <input name="email" type="email" id="newsletter" class="input-text" onfocus="if (this.value == 'Your email address')
+                                                            this.value = '';" onblur="if (this.value == '')
+                                                                        this.value = 'Your email address';" value="Your email address" data-validate="{required:true, 'validate-email':true}"/>
+                                            </div>
+
+                                            <div class="action-newsletter">
+                                                <button class="action subscribe primary" title="<?php /* @escapeNotVerified */ echo __('Subscribe') ?>" type="submit">
+                                                    <span><?php /* @escapeNotVerified */ echo __('Subscribe') ?></span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="newsletter-bottom">
+                                            <div class="newscheck">
+                                                <span>
+                                                    <input id="dont-show-again" type="checkbox">
+                                                </span>
+                                            </div>
+                                            <label for="dont-show-again">
+                                                <?php echo __('Don\'t show this popup again') ?>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>      
+                </div>
+            </div>
+            <style type="text/css">
+            <?php
+            if ($popupCustomStyle != '') {
+                echo $popupCustomStyle;
+            }
+            ?>
+                #newsletter-popup {
+            <?php
+            if ($popupWidth != '') {
+                echo "width:" . $popupWidth . ";";
+            }
+            if ($popupHeight != '') {
+                echo "height:" . $popupHeight . ";";
+            }
+            if ($popupBackgroundColor != '') {
+                echo "background-color:#" . $popupBackgroundColor . ";";
+            }
+            ?>
+                }
+                .fancybox-skin {
+            <?php
+            if ($popupBackgroundImage != '') {
+                $imageUrl = $mediaUrl . 'citti/img/' . $popupBackgroundImage;
+                ?>
+                        background-image:url(<?php echo $imageUrl; ?>);
+                <?php
+            }
+            ?>
+                }
+                @media (max-width: 767px) {
+                    #newsletter-popup {
+                        width: 100%;
+                    }
+                }
+            </style>
+            <script type="text/javascript">
+                require(['jquery', 'themefancybox'], function() {
+                    jQuery(document).ready(function() {
+            //                var check_cookie = Cookies.get('newsletter_popup');
+                        var check_cookie = getCookie('newsletter_popup');
+                        if (check_cookie == null || check_cookie == 'shown') {
+                            setTimeout(function() {
+                                popupNewsletter();
+                            }, <?php echo $popupDelay; ?>);
+                        }
+                        jQuery('#newsletter-popup .newsletter-bottom input').on('click', function() {
+                            if (jQuery(this).parent().find('input:checked').length) {
+            //                        var check_cookie = Cookies.get('newsletter_popup');
+                                var check_cookie = getCookie('newsletter_popup');
+                                if (check_cookie == null || check_cookie == 'shown') {
+            //                            Cookies.set('newsletter_popup', 'dontshowitagain');
+                                    document.cookie = "newsletter_popup=dontshowitagain";
+                                }
+                                else
+                                {
+            //                            Cookies.set('newsletter_popup', 'shown');
+                                    document.cookie = "newsletter_popup=shown";
+                                    popupNewsletter();
+                                }
+                            } else {
+            //                        Cookies.set('newsletter_popup', 'shown');
+                                document.cookie = "newsletter_popup=shown";
+                            }
+                        });
+                    });
+
+                    function popupNewsletter() {
+                        jQuery.fancybox({
+                            padding: 15,
+                            'href': '#newsletter-popup'
+                        });
+                        jQuery('#newsletter-popup').trigger('click');
+                        jQuery('#newsletter-popup').parents('#fancybox-wrap').addClass('popup-fancy');
+                    }
+                    ;
+                    function getCookie(name) {
+                        var value = "; " + document.cookie;
+                        var parts = value.split("; " + name + "=");
+                        if (parts.length == 2)
+                            return parts.pop().split(";").shift();
+                    }
+                });
+            </script>
+        <?php } ?>
+    <?php } else { ?>
+        <div class="display-popup" style="display:none;">
+            <div id="newsletter-popup">
+                <div class="promotional-popup">
+                    <div class="pop-subscribe">
+                        <form class="form subscribe"
+                              novalidate
+                              action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
+                              method="post"
+                              data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+                              id="newsletter-validate-detail">
+                            <div class="w-newsletter">
+                                <div class="image-newsletter">
+                                    <a href="#" >
+                                        <img src="<?php echo $mediaUrl . $popupImage ?>" alt="newsletter-image" />
+                                    </a>
+                                </div>
+
+                                <div class="newsletter-info">
+                                    <div class="newsletter-title">
+                                        <h2><?php echo $newsletterTitle; ?></h2>
+                                    </div>
+
+                                    <div class="short-description">
+                                        <p>
+                                            <?php echo $newsletterText; ?>
+                                        </p>
+                                    </div>
+
+                                    <div class="form-newsletter-popup">
+                                        <div class="input-box">
+                                            <input name="email" type="email" id="newsletter" class="input-text" onfocus="if (this.value == 'Your email address')
+                                                        this.value = '';" onblur="if (this.value == '')
+                                                                    this.value = 'Your email address';" value="Your email address" data-validate="{required:true, 'validate-email':true}"/>
+                                        </div>
+
+                                        <div class="action-newsletter">
+                                            <button class="action subscribe primary" title="<?php /* @escapeNotVerified */ echo __('Subscribe') ?>" type="submit">
+                                                <span><?php /* @escapeNotVerified */ echo __('Subscribe') ?></span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="newsletter-bottom">
+                                        <div class="newscheck">
+                                            <span>
+                                                <input id="dont-show-again" type="checkbox">
+                                            </span>
+                                        </div>
+                                        <label for="dont-show-again">
+                                            <?php echo __('Don\'t show this popup again') ?>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>      
+            </div>
+        </div>
+        <style type="text/css">
+        <?php
+        if ($popupCustomStyle != '') {
+            echo $popupCustomStyle;
+        }
+        ?>
+            #newsletter-popup {
+        <?php
+        if ($popupWidth != '') {
+            echo "width:" . $popupWidth . ";";
+        }
+        if ($popupHeight != '') {
+            echo "height:" . $popupHeight . ";";
+        }
+        if ($popupBackgroundColor != '') {
+            echo "background-color:#" . $popupBackgroundColor . ";";
+        }
+        ?>
+            }
+            .fancybox-skin {
+        <?php
+        if ($popupBackgroundImage != '') {
+            $imageUrl = $mediaUrl . 'citti/img/' . $popupBackgroundImage;
+            ?>
+                    background-image:url(<?php echo $imageUrl; ?>);
+            <?php
+        }
+        ?>
+            }
+            @media (max-width: 767px) {
+                #newsletter-popup {
+                    width: 100%;
+                }
+            }
+        </style>
+        <script type="text/javascript">
+            require(['jquery', 'themefancybox'], function() {
+                jQuery(document).ready(function() {
+        //                var check_cookie = Cookies.get('newsletter_popup');
+                    var check_cookie = getCookie('newsletter_popup');
+                    if (check_cookie == null || check_cookie == 'shown') {
+                        setTimeout(function() {
+                            popupNewsletter();
+                        }, <?php echo $popupDelay; ?>);
+                    }
+                    jQuery('#newsletter-popup .newsletter-bottom input').on('click', function() {
+                        if (jQuery(this).parent().find('input:checked').length) {
+        //                        var check_cookie = Cookies.get('newsletter_popup');
+                            var check_cookie = getCookie('newsletter_popup');
+                            if (check_cookie == null || check_cookie == 'shown') {
+        //                            Cookies.set('newsletter_popup', 'dontshowitagain');
+                                document.cookie = "newsletter_popup=dontshowitagain";
+                            }
+                            else
+                            {
+        //                            Cookies.set('newsletter_popup', 'shown');
+                                document.cookie = "newsletter_popup=shown";
+                                popupNewsletter();
+                            }
+                        } else {
+        //                        Cookies.set('newsletter_popup', 'shown');
+                            document.cookie = "newsletter_popup=shown";
+                        }
+                    });
+                });
+
+                function popupNewsletter() {
+                    jQuery.fancybox({
+                        padding: 15,
+                        'href': '#newsletter-popup'
+                    });
+                    jQuery('#newsletter-popup').trigger('click');
+                    jQuery('#newsletter-popup').parents('#fancybox-wrap').addClass('popup-fancy');
+                }
+                ;
+                function getCookie(name) {
+                    var value = "; " + document.cookie;
+                    var parts = value.split("; " + name + "=");
+                    if (parts.length == 2)
+                        return parts.pop().split(";").shift();
+                }
+            });
+        </script>
+    <?php } ?>
+<?php } ?>

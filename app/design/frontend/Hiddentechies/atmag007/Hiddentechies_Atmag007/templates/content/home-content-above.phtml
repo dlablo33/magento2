@@ -1,0 +1,9 @@
+<?php
+$helper = $this->helper('Hiddentechies\Atmag007\Helper\Data');
+$homeContentAbove = $helper->getConfigValue('themesettings/content_blocks/home_content_above');
+$isHome = $helper->getIsHome();
+$mediaUrl = $helper->getMediaUrl();
+if ($isHome) {
+    ?>
+    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($homeContentAbove)->toHtml(); ?>
+<?php } ?>

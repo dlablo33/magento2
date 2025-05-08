@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Openpay_Banks layout webhook
+ *
+ * @category    Openpay
+ * @package     Openpay_Banks
+ * @author      Federico Balderas
+ * @copyright   Openpay (http://openpay.mx)
+ * @license     http://www.apache.org/licenses/LICENSE-2.0  Apache License Version 2.0
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">    
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" template="Openpay_Banks::webhook.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Openpay_Cards default configuration
+ *
+ * @category    Openpay
+ * @package     Openpay_Cards
+ * @author      Federico Balderas
+ * @copyright   Openpay (http://openpay.mx)
+ * @license     http://www.apache.org/licenses/LICENSE-2.0  Apache License Version 2.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <csp>
+            <mode>
+                <storefront>
+                    <report_only>0</report_only>
+                </storefront>
+                <admin>
+                    <report_only>0</report_only>
+                </admin>
+            </mode>
+        </csp>
+        <payment>
+            <openpay_cards>
+                <active>0</active>
+                <model>Openpay\Cards\Model\Payment</model>
+                <country>MX</country>
+                <merchant_classification>Openpay</merchant_classification>
+                <title>Pago con tarjetas de crédito o débito</title>
+                <sandbox_sk backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <live_sk backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <cctypes>AE,VI,MC,CN</cctypes>
+                <cctypes_mx>AE,VI,MC,CN</cctypes_mx>
+                <cctypes_co>AE,VI,MC</cctypes_co>
+                <cctypes_pe>AE,VI,MC,DN</cctypes_pe>
+                <payment_action>authorize_capture</payment_action>
+                <save_cc>0</save_cc>
+                <use_card_points>no</use_card_points>
+                <iva>0</iva>
+                <allowspecific>0</allowspecific>
+                <minimum_amounts>0</minimum_amounts>
+                <installments>1</installments>
+                <three_months>300</three_months>
+                <six_months>600</six_months>
+                <nine_months>900</nine_months>
+                <twelve_months>1200</twelve_months>
+                <eighteen_months>1800</eighteen_months>
+                <processing_openpay>processing</processing_openpay>
+                <pending_payment_openpay>payment_review</pending_payment_openpay>
+                <canceled_openpay>canceled</canceled_openpay>
+            </openpay_cards>
+        </payment>
+    </default>
+</config>

@@ -1,0 +1,149 @@
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<style>
+    .payment-method__logo {
+        float: right;
+    }
+    .openpay__title {
+        border-bottom: 1px solid #cccccc; 
+        padding-bottom: 15px;
+        color: #0063A8;
+    }
+    .openpay__sub-title {
+        color: #11BFF8;
+    }
+    .openpay__title-steps {
+        margin-top: 25px; 
+        margin-bottom: 20px;
+        color: #0063A8;
+    }
+    .steps {
+        overflow: hidden;
+    }
+    .steps__item {
+        width: 30%; float: left; 
+        text-align: center; 
+        padding-left: 1.5%; 
+        padding-right: 1.5%;
+    }
+    .steps__image {
+        max-width: 75%;
+    }
+    .steps__text {
+        padding: 3px;
+        color: #0063A8;
+    }
+</style>
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+        <label data-bind="attr: {'for': getCode()}" class="label"><span data-bind="text: getTitle()"></span></label>
+        <img src="https://img.openpay.mx/plugins/openpay-logo_106x25.png" class="payment-method__logo">
+    </div>
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+                
+        <div id="mx-stores-container" class="openpay items check payable" data-bind="visible: country() === 'MX'">            
+            <h3 class="openpay__title">Pago en efectivo en tiendas de conveniencia</h3>            
+            <img src="https://img.openpay.mx/plugins/paynet_logos.png" alt="" style="max-width: 100%;" />
+            <p>
+                <a href="http://www.openpay.mx/tiendas-de-conveniencia.html" target="_blank" class="openpay__sub-title">Consulta las tiendas afiliadas</a>
+            </p>           
+            <h3 class="openpay__title-steps">Pasos para tu pago por tienda</h3>
+            <div class="steps">                
+                <div class="steps__item">
+                    <img src="https://img.openpay.mx/plugins/file.svg" alt="Step 1" class="steps__image" />
+                    <p class="steps__text">Haz clic en el botón pago, tu compra quedará en espera de que realices tu pago.</p>
+                </div>    
+                <div class="steps__item">
+                    <img src="https://img.openpay.mx/plugins/printer.svg" alt="Step 2" class="steps__image" />
+                    <p class="steps__text">Imprime tu recibo, llévalo a tu tienda de conveniencia más cercana y realiza el pago.</p>
+                </div>    
+                <div class="steps__item">
+                    <img src="https://img.openpay.mx/plugins/mail.svg" alt="Step 3" class="steps__image" />
+                    <p class="steps__text">Inmediatamente después de recibir tu pago te enviaremos un correo electrónico con la confirmación de pago.</p>
+                </div>    
+            </div>
+        </div>
+        
+        <div id="co-stores-container" class="openpay items check payable" data-bind="visible: country() === 'CO'">
+            <h3 class="openpay__title">Pago en efectivo</h3>            
+            <img src="https://img.openpay.mx/plugins/puntos_recaudo_logos.png" alt="Punto Red">
+            <p>
+                <a href="https://www.openpay.co/efectivo-en-tiendas/" target="_blank" class="openpay__sub-title">Consulta los puntos de recaudo</a>
+            </p>           
+            <h3 class="openpay__title-steps">Pasos para tu pago por tienda</h3>
+            <div class="steps">                
+                <div class="steps__item">
+                    <img src="https://img.openpay.mx/plugins/file.svg" alt="" class="steps__image" />
+                    <p class="steps__text">Haz clic en el botón pago, tu compra quedará en espera de que realices tu pago.</p>
+                </div>    
+                <div class="steps__item">
+                    <img src="https://img.openpay.mx/plugins/printer.svg" alt="" class="steps__image" />
+                    <p class="steps__text">Imprime tu recibo, llévalo a tu tienda de conveniencia más cercana y realiza el pago.</p>
+                </div>    
+                <div class="steps__item">
+                    <img src="https://img.openpay.mx/plugins/mail.svg" alt="" class="steps__image" />
+                    <p class="steps__text">Inmediatamente después de recibir tu pago te enviaremos un correo electrónico con la confirmación de pago.</p>
+                </div>    
+            </div>
+        </div>
+
+        <div id="pe-stores-container" class="openpay items check payable" data-bind="visible: country() === 'PE'">
+            <h3 class="openpay__title">Pago en agencias</h3>
+            <div class="store-logos-pe" style="text-align: center;">        
+                <img src="https://img.openpay.mx/plugins/agencias_logos.png" alt="Pago en agencias">
+            </div>       
+            <h3 class="openpay__title-steps">Pasos para tu pago por tienda</h3>
+            <div class="steps">                
+                <div class="steps__item">
+                    <img src="https://img.openpay.mx/plugins/file.svg" alt="" class="steps__image" />
+                    <p class="steps__text">Haz clic en el botón pago, tu compra quedará en espera de que realices tu pago.</p>
+                </div>    
+                <div class="steps__item">
+                    <img src="https://img.openpay.mx/plugins/printer.svg" alt="" class="steps__image" />
+                    <p class="steps__text">Imprime tu recibo, llévalo a tu tienda de conveniencia más cercana y realiza el pago.</p>
+                </div>    
+                <div class="steps__item">
+                    <img src="https://img.openpay.mx/plugins/mail.svg" alt="" class="steps__image" />
+                    <p class="steps__text">Inmediatamente después de recibir tu pago te enviaremos un correo electrónico con la confirmación de pago.</p>
+                </div>    
+            </div>
+        </div>
+                    
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: placeOrder,
+                        attr: {title: $t('Place Order')},
+                        css: {disabled: !isPlaceOrderActionAllowed()},
+                        enable: (getCode() == isChecked())
+                        "
+                        disabled>
+                    <span data-bind="i18n: 'Place Order'"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

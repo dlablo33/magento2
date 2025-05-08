@@ -1,0 +1,11 @@
+/vendor/
+/pub/static/*
+/generated/*
+/var/*
+/app/etc/env.php
+/.idea/
+/node_modules/
+/*.log
+.DS_Store
+*.zip
+*.tar.gz

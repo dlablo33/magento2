@@ -1,0 +1,394 @@
+<!--
+/**
+ * Openpay_Cards Template
+ *
+ * @category    Openpay
+ * @package     Openpay_Cards
+ * @author      Federico Balderas
+ * @copyright   Openpay (http://openpay.mx)
+ * @license     http://www.apache.org/licenses/LICENSE-2.0  Apache License Version 2.0
+ */
+-->
+<style>
+    .payment-method__right {
+        float: right;
+    }
+    .payment-method__left {
+        float: left;
+    }
+    .payment-method__mandatory {
+        color: red;
+    }
+    .payment-method__space-height{
+        margin-top: 1em !important;
+        margin-bottom: 2em !important;
+    }
+
+    /* Tooltip guardar tarjeta */
+    .tooltip-container {
+        margin: 0 auto;
+        display: inline-block;
+    }
+
+    .tooltip-container {
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .tooltip-one {
+        top: -15px;
+        left: 105%;
+        z-index: 1;
+        padding: 10px 15px;
+        font-size: smaller;
+        background: #072146;
+        color: white;
+        position: absolute;
+        width: 220px;
+        border-radius: 5px;
+        text-align: justify;
+        filter: drop-shadow(0 3px 5px #ccc);
+        line-height: 1.5;
+        display: none;
+        right: 50%;
+        margin-right: -110px;
+    }
+
+    .tooltip-trigger:hover + .tooltip-one {
+        display: block;
+    }
+
+    .payment-method__cards_accept{
+        list-style: none;
+        padding-left: inherit;
+        display: -webkit-box;
+    }
+
+    .payment-method__cards_accept-list {
+        list-style: none;
+        margin: 0 5px 0 0;
+        vertical-align: top;
+    }
+
+    .payment-method__cards_accept-img {
+        display: inline-block;
+        padding-top: 6px;
+        vertical-align: top;
+    }
+
+    .custom_field_required {
+        margin-top: 7px;
+        color: #e02b27;
+        font-size: 1.2rem;
+    }
+
+    /*
+        Ajustes responsive
+    */
+    @media screen and (min-width: 220px) and (max-width: 479px) {
+        .payment-method__select-card {
+            width: 100% !important;
+        }
+
+        .input-text .payment-method__select-card{
+            width: 100% !important;
+        }
+    }
+
+    @media screen and (min-width: 480px) and (max-width: 768px) {
+        .payment-method__select-card {
+            width: 100% !important;
+        }
+
+        .input-text .payment-method__select-card{
+            width: 100% !important;
+        }
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px){
+        .payment-method__select-card {
+            width: 100% !important;
+        }
+
+        .input-text .payment-method__select-card{
+            width: 100% !important;
+        }
+    }
+
+    @media screen and (min-width: 1025px) and (max-width: 1200px) {
+        .payment-method__select-card{
+            width: 70% !important;
+        }
+
+        .input-text .payment-method__select-card{
+            width: 70% !important;
+        }
+    }
+
+    @media screen and (min-width: 1201px) {
+        .payment-method__select-card{
+            width: 70% !important;
+        }
+
+        .input-text .payment-method__select-card{
+            width: 70% !important;
+        }
+    }
+
+</style>
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+        <label data-bind="attr: {'for': getCode()}" class="label"><span data-bind="text: getTitle()"></span></label>
+    </div>
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+
+        <form id="openpay_form" class="form" data-bind="attr: {'id': getCode() + '-form'}">
+            <input type="hidden" id="openpay_token" name="openpay_token" value="" />
+            <input type="hidden" name="withInterest" id="withInterest" value=""/>
+            <input type="hidden" name="use_card_points" id="use_card_points" value="false" />
+            <!-- Custom Form Openpay -->
+            <fieldset data-bind="attr: {class: 'fieldset payment items ccard ' + getCode(), id: 'payment_form_' + getCode()}">
+                <!-- ko if: (isShowLegend())-->
+                <legend class="legend">
+                    <span><!-- ko i18n: 'Credit Card Information'--><!-- /ko --></span>
+                </legend><br />
+                <!-- /ko -->
+                <div class="fieldset" id="tarjetas_aceptadas">
+                    <div class="field">
+                        <label for="tarjetas_aceptadas" class="label payment-method__space-height">Tarjetas Aceptadas</label>
+                        <ul class="payment-method__cards_accept">
+                            <!-- ko foreach: {data: getCcAvailableTypesValues(), as: 'item'} -->
+                            <li class="payment-method__cards_accept-list" >
+                                <!--ko if: $parent.getIcons(item.value) -->
+                                <img class="payment-method__cards_accept-img" data-bind="attr: {
+                                    'src': $parent.getIcons(item.value).url,
+                                    'alt': item.type,
+                                    'width': $parent.getIcons(item.value).width,
+                                    'height': $parent.getIcons(item.value).height
+                                    }">
+                                <!--/ko-->
+                            </li>
+                            <!--/ko-->
+                        </ul>
+                        <input type="hidden"
+                                name="payment[cc_type]"
+                                class="input-text"
+                                value=""
+                                data-bind="attr: {id: getCode() + '_cc_type', 'data-container': getCode() + '-cc-type'},
+                                value: creditCardType
+                                ">
+                    </div>
+                </div>
+                <div class="field required" id="seleccionar_tarjeta">
+                    <label for="seleccionar_tarjeta" class="label" data-bind="visible: existsOneCreditCard() && isLoggedIn()">Seleccionar tarjeta</label>
+                    <div class="control">
+                        <select id="openpay_cc" name="openpay_cc" class="select payment-method__select-card" 
+                            data-bind="visible: existsOneCreditCard() && isLoggedIn(),
+                                event:{ change: creditCardOption() },
+                                options: getCreditCardList(), optionsText: 'name', optionsValue: 'value'">
+                        </select>
+                    </div>
+                    
+                </div>
+
+                
+                <div class="field required" id="nombre_titular_tarjeta" data-bind="visible: notLogged()">
+                    <label for="openpay_cards_cc_holder_name" class="label">
+                        <span>Nombre del titular</span>
+                    </label>
+                    <div class="control">
+                        <input type="text" class="payment-method__select-card" name="nombre_titular" id="nombre_titular"
+                                required/>
+                        <div for="openpay_cards_cc_holder_name" class="custom_field_required" id="openpay_cards_cc_holder_name-error" style="display: none;">
+                            Please enter a valid name in this field.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="field number required" id="numero_de_tarjeta">
+                    <label data-bind="attr: {for: getCode() + '_cc_number'}" class="label">
+                        <span><!-- ko i18n: 'Número de tarjeta'--><!-- /ko --></span>
+                    </label>
+                    <div class="control">
+                        <input type="number" pattern="\d*" maxlength="16" name="payment[cc_number]" 
+                                class="input-text payment-method__select-card" value=""
+                                data-bind="attr: {
+                                                autocomplete: off,
+                                                id: getCode() + '_cc_number',
+                                                title: $t('Número de tarjeta'),
+                                                'data-container': getCode() + '-cc-number',
+                                                'data-validate': JSON.stringify({'required-number':true, 'validate-card-type':getCcAvailableTypesValues(), 'validate-card-number':'#' + getCode() + '_cc_type'})},
+                                            enable: isActive($parents),
+                                            value: creditCardNumber,
+                                            valueUpdate: 'keyup' "
+                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                    </div>
+                </div>
+                <div class="field date required" data-bind="attr: {id: getCode() + '_cc_type_exp_div'}">
+                    <label data-bind="attr: {for: getCode() + '_expiration'}" class="label">
+                        <span><!-- ko i18n: 'Fecha de expiración (MM/AA)'--><!-- /ko --></span>
+                    </label>
+                    <div class="control">
+                        <div class="fields group group-2">
+                            <div class="field no-label month">
+                                <div class="control">
+                                    <select  name="payment[cc_exp_month]"
+                                                class="select select-month"
+                                                data-bind="attr: {id: getCode() + '_expiration', 'data-container': getCode() + '-cc-month', 'data-validate': JSON.stringify({required:true, 'validate-cc-exp':'#' + getCode() + '_expiration_yr'})},
+                                                        enable: isActive($parents),
+                                                        options: getCcMonthsValues(),
+                                                        optionsValue: 'value',
+                                                        optionsText: 'month',
+                                                        optionsCaption: $t('Mes'),
+                                                        value: creditCardExpMonth">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field no-label year">
+                                <div class="control">
+                                    <select name="payment[cc_exp_year]"
+                                            class="select select-year"
+                                            data-bind="attr: {id: getCode() + '_expiration_yr', 'data-container': getCode() + '-cc-year', 'data-validate': JSON.stringify({required:true})},
+                                                        enable: isActive($parents),
+                                                        options: getCcYearsValues(),
+                                                        optionsValue: 'value',
+                                                        optionsText: 'year',
+                                                        optionsCaption: $t('Año'),
+                                                        value: creditCardExpYear">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ko if: (hasVerification())-->
+                <div class="field cvv required" data-bind="attr: {id: getCode() + '_cc_type_cvv_div'}">
+                    <label data-bind="attr: {for: getCode() + '_cc_cid'}" class="label">
+                        <span><!-- ko i18n: 'Código de seguridad (CVC/CVV)'--><!-- /ko --></span>
+                    </label>
+                    <div class="control _with-tooltip">
+                        <input type="password"
+                                maxlength="4"
+                                autocomplete="off"
+                                class="input-text cvv"
+                                name="payment[cc_cid]"
+                                value=""
+                                data-bind="attr: {id: getCode() + '_cc_cid',
+                                    title: $t('Card Verification Number'),
+                                    'data-container': getCode() + '-cc-cvv',
+                                    'data-validate': JSON.stringify({'required-number':true, 'validate-card-cvv':'#' + getCode() + '_cc_type'})},
+                                    enable: isActive($parents),
+                                    value: creditCardVerificationNumber" />
+                        <div class="field-tooltip toggle">
+                            <span class="field-tooltip-action action-cvv"
+                                    tabindex="0"
+                                    data-toggle="dropdown"
+                                    data-bind="attr: {title: $t('What is this?')}, mageInit: {'dropdown':{'activeClass': '_active'}}">
+                                <span><!-- ko i18n: 'What is this?'--><!-- /ko --></span>
+                            </span>
+                            <div class="field-tooltip-content"
+                                data-target="dropdown"
+                                data-bind="html: getCvvImageHtml()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-method__right">
+                        <label for="campos_requeridos"><span class="payment-method__mandatory">* </span> Campos obligatorios</label>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </fieldset> 
+            
+            <div id="save_cc_fieldset" class="field" data-bind="visible: canSaveCC() && isLoggedIn()" style="margin-bottom: 20px;">
+                    <input type="checkbox" name="save_cc" id="save_cc" /> 
+                    <label for="save_cc" class="label">Guardar tarjeta</label>
+                <div class="tooltip-container">
+                    <span class="tooltip-trigger" > &nbsp; <img src="https://img.openpay.mx/plugins/communication-and-multimedia-hel.png"></span>
+                    <div class="tooltip-one">Al guardar los datos de tu tarjeta agilizarás tus pagos futuros y podrás usarla como método de pago guardado</div>
+                </div>
+                
+            </div>
+
+            <div id="openpay_cards_interest_free" class="fieldset" style="display: none;">
+                <div class="field type">
+                    <label class="label" for="openpay_cards_interest_free" style="font-weight: 600; margin-bottom: 5px;">Meses sin intereses</label>
+                    <div class="control">
+                        <select id="interest_free" name="interest_free" class="select" style="width: auto;" data-bind="options: getMonthsInterestFree(),
+                       optionsText: function(month) {
+                           return month > 1 ? month +' meses' : 'Pago de contado';
+                       }"></select>
+                    </div>
+                </div>
+                <div id="total-monthly-payment" class="field type" style="display: none;">
+                    <label style="font-weight: 600; margin-bottom: 5px;">Estarías pagando mensualmente</label>
+                    <p class="openpay-total" style="font-size: 2em; font-weight: bold;">$<span id="monthly-payment">100</span></p>
+                </div>
+            </div>
+
+            <div id="openpay_installments" class="fieldset" style="display: none;">
+                <div class="field type">
+                    <label id="openpay_installments_title" class="label" for="openpay_installments" style="font-weight: 600; margin-bottom: 5px;">Pago en cuotas</label>
+                    <div class="control">
+                        <select id="installments" name="installments" class="select" style="width: auto;" data-bind="options: getInstallments(),
+                       optionsText: function(installment) {
+                           return installment > 1 ? installment +' cuotas' : 'Una sola cuota';
+                       }"></select>
+                    </div>
+                </div>
+                <div id="total-monthly-payment" class="field type" style="display: none;">
+                    <label style="font-weight: 600; margin-bottom: 5px;">Estarías pagando mensualmente</label>
+                    <p class="openpay-total" style="font-size: 2em; font-weight: bold;">$<span id="monthly-payment">100</span></p>
+                </div>                
+            </div>    
+            <br>
+            <div class="field" style="margin-bottom: 4em;">
+                <div style="display: inline-block; position: relative;">
+                    <img style="margin-left: -0.5em;" width="35px;" src="https://img.openpay.mx/plugins/oppenpay-security.png">
+                    <span style="font-size: small; float: right;">
+                        Tus pagos se realizan de forma segura <br>
+                        con encriptación de 256 bits 
+                    </span>
+                </div>
+                <div class="payment-method__right">
+                    <img src="https://img.openpay.mx/plugins/openpay-logo_106x25.png" class="payment-method__right">
+                </div>
+            </div>
+
+        </form>
+
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: preparePayment,
+                        attr: {title: $t('Place Order')},
+                        css: {disabled: !isPlaceOrderActionAllowed()},
+                        enable: (getCode() == isChecked())
+                        "
+                        disabled>
+                    <span data-bind="text: $t('Realizar el pedido')"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+  <default>
+    <carriers>
+      <dhlrates>
+        <active>0</active>
+        <sallowspecific>0</sallowspecific>
+        <apikey></apikey>
+        <apisource></apisource>
+        <model>Dhlexpress\Services\Model\Carrier\Dhlexpressrates</model>
+        <name>Shipping Rates</name>
+        <title>DHL Express Shipping Rates</title>
+        <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+      </dhlrates>
+    </carriers>
+  </default>
+</config>

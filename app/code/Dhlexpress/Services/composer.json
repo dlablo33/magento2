@@ -1,0 +1,26 @@
+{
+  "name": "dhlexpress/dhlexpress-services",
+  "description": "Hosted services for live shipping rates at checkout",
+  "type": "magento2-module",
+  "version": "3.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Starshipit",
+      "email": "support@starshipit.com",
+      "homepage": "https://www.starshipit.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Dhlexpress\\Services\\": ""
+    }
+  }
+}
+

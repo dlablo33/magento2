@@ -1,0 +1,3501 @@
+@media (min-width: 768px) {
+    .hlm-topmenu.navigation {
+        > ul {
+            position: relative;
+            &:after {
+                disaply: table;
+                content: '';
+                clear: both;
+            }
+        }
+        ul {
+            li {
+                &.level0 {
+                    &.parent {
+                        > a {
+                            position:relative;
+                            &:after {
+                                content: '\e622';
+                                font-family: 'icons-blank-theme';
+                                position: absolute;
+                                right: 5px;
+                                font-size: 22px;
+                            }
+                        }
+                    }
+                    .subchildmenu  {
+                        li {
+                            &.parent {
+                                > a {
+                                    position: relative;
+                                    &:after {
+                                        content: '\e622';
+                                        font-family: 'icons-blank-theme';
+                                        position: absolute;
+                                        right: 10px;
+                                        font-size: 22px;
+                                        top: 10px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        div.submenu {
+            ul {
+                li {
+                    &.parent {
+                        > a {
+                            position:relative;
+                            &:after {
+                                line-height: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .open-children-toggle {
+            display: none;
+        }
+        span.cat-label {
+            position: absolute;
+            text-transform: uppercase;
+            font: inherit;
+            font-size: 9px;
+            padding: 2px;
+            border-radius: 2px;
+            line-height: 1;
+            color: #fff;
+
+            &:before {
+                content: "";
+                position: absolute;
+                width: 3px;
+                height: 3px;
+                border: 3px solid transparent;
+            }
+            &.cat-label-label1 {
+                background-color: #0cc485;
+            }
+            &.cat-label-label2 {
+                background-color: #eb2771;
+            }
+            &.cat-label-label3 {
+                background-color: #0ae3eb;
+            }
+        }
+        a:hover > span > span.cat-label {
+            text-decoration: none;
+        }
+        li {
+            > a > span {
+                position: relative;
+            }
+            &.level0 {
+                > .level-top {
+                    transition-delay: 0s !important;
+                }
+                > a > span.cat-label {
+                    top: 5px;
+                    right: 14px;
+
+                    &:before {
+                        left: 3px;
+                        bottom: -6px;
+                    }
+                    &.cat-label-label1 {
+                        &:before {
+                            border-top-color: #0cc485;
+                        }
+                    }
+                    &.cat-label-label2 {
+                        &:before {
+                            border-top-color: #eb2771;
+                        }
+                    }
+                    &.cat-label-label3 {
+                        &:before {
+                            border-top-color: #0ae3eb;
+                        }
+                    }
+                }
+            }
+            .subchildmenu {
+                li > a > span > span.cat-label {
+                    top: 3px;
+                    right: -35px;
+
+                    &:before {
+                        left: -6px;
+                        bottom: 3px;
+                    }
+                    &.cat-label-label1 {
+                        &:before {
+                            border-right-color: #0cc485;
+                        }
+                    }
+                    &.cat-label-label2 {
+                        &:before {
+                            border-right-color: #eb2771;
+                        }
+                    }
+                    &.cat-label-label3 {
+                        &:before {
+                            border-right-color: #0ae3eb;
+                        }
+                    }
+                }
+            }
+        }
+        .subchildmenu.mega-columns {
+            > li {
+                float: left;
+                padding: 0 5px;
+                box-sizing: border-box;
+            }
+            &.columns1 {
+                > li {
+                    float: none;
+                }
+            }
+            &.columns2 {
+                > li {
+                    width: 50%;
+
+                    &:nth-child(2n+1) {
+                        clear: both;
+                    }
+                }
+            }
+            &.columns3 {
+                > li {
+                    width: 33.33%;
+
+                    &:nth-child(3n+1) {
+                        clear: both;
+                    }
+                }
+            }
+            &.columns4 {
+                > li {
+                    width: 25%;
+
+                    &:nth-child(4n+1) {
+                        clear: both;
+                    }
+                }
+            }
+            &.columns5 {
+                > li {
+                    width: 20%;
+
+                    &:nth-child(5n+1) {
+                        clear: both;
+                    }
+                }
+            }
+            &.columns6 {
+                > li {
+                    width: 16.66%;
+
+                    &:nth-child(6n+1) {
+                        clear: both;
+                    }
+                }
+            }
+        }
+        li.level0 {
+            transition-delay: 0s;
+            transition: .2s opacity;
+
+            &.fl-left {
+                float: left;
+            }
+            &.fl-right {
+                float: right;
+
+                &.staticwidth {
+                    .submenu {
+                        left: auto;
+                        right: 0;
+                        border-radius: 0;
+                    }
+                }
+            }
+            .submenu {
+                display: block;
+                visibility: hidden;
+                opacity: 0;
+                transition: .2s opacity;
+                > ul {
+                    margin-top: 0;
+
+                    &:before, &:after {
+                        display: none;
+                    }
+                }
+            }
+            &.parent > .submenu.popup-left {
+                left: auto;
+                right: 0;
+                border-radius: 0;
+            }
+            .row {
+                margin-left: -5px;
+                margin-right: -5px;
+            }
+            .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+                padding-left: 5px;
+                padding-right: 5px;
+                box-sizing: border-box;
+            }
+            &.fullwidth {
+                position: static;
+
+                > .submenu {
+                    width: 100%;
+                    border-radius: 0;
+                    box-sizing: border-box;
+                }
+            }
+            &.fullwidth, &.staticwidth {
+                > .submenu {
+                    padding: 5px 8px 15px;
+                    left: 0;
+                    transition: top 0.3s ease 0s;
+                }
+                &:hover {
+                    > .submenu {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+                .submenu {
+                    li.parent {
+                        > a {
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                    li.level1 {
+                        > a {
+                            font-size: 14px;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            margin-top: 10px;
+                        }
+                        .subchildmenu {
+                            .subchildmenu {
+                                padding-left: 10px;
+                            }
+                        }
+                        > .menu-thumb-img {
+                            margin: 10px 0 -5px;
+                        }
+                    }
+                    .subchildmenu {
+                        .subchildmenu {
+                            padding: 5px 0;
+                        }
+                    }
+                    a {
+                        padding: 8px 20px;
+                        line-height: 1;
+                        font-size: 13px;
+
+                        &:hover {
+                            /*background: none;*/
+
+                            > span {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                    .menu-top-block, .menu-left-block, .menu-right-block, .menu-bottom-block {
+                        a {
+                            display: inline;
+
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+                        a.btn-default {
+                            background-color: #08c;
+                            color: #fff;
+
+                            &:hover, &:focus {
+                                background-color: #08c;
+                                color: #fff;
+                                text-decoration: none;
+                                opacity: 0.8;
+                            }
+                        }
+                    }
+                }
+            }
+            &.classic {
+                .submenu > .row {
+                    margin: 0;
+                }
+                .subchildmenu {
+                    min-width: 230px;
+
+                    .subchildmenu {
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: .2s opacity;
+                        border-radius: 0;
+                        position: absolute;
+                        left: 0;
+                        top: -6px;
+                        z-index: 3;
+                    }
+                    > li:hover {
+                        > .subchildmenu {
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+                }
+                li.parent {
+                    & > .subchildmenu.popup-left {
+                        left: auto;
+                        right: 100%;
+                        border-radius: 0;
+                    }
+                }
+                .subchildmenu.popup-left .subchildmenu {
+                    left: auto;
+                    right: 100%;
+                    border-radius: 0;
+                }
+                &:hover {
+                    > .submenu {
+                        visibility: visible;
+                        opacity: 1;
+                        top: 100%;
+                    }
+                }
+                li:hover > .submenu {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+            &.classic {
+                .submenu, .subchildmenu  {
+                    left: 0;
+                    transition: top 0.3s ease 0s;
+                    .subchildmenu {
+                        top: 0;
+                        transition: top 0.3s ease 0s;
+                        padding: 0;
+                    }
+                }
+            }
+            &.staticwidth {
+                .submenu {
+                    left: 0;
+                    transition: top 0.3s ease 0s;
+                }
+            }
+        }
+        &.side-megamenu {
+            li {
+                margin: 0;
+                position: relative;
+
+                &.level0 {
+                    display: block;
+                    position: relative;
+                    border-radius: 0;
+                    margin: 0;
+
+                    &.parent > a:after {
+                        content: '\e622';
+                        font-family: 'icons-blank-theme';
+                        display: inline-block;                        
+                        vertical-align: top;
+                        margin-left: 6px;
+                        line-height: 44px;
+                        float: right;
+                        font-size: 22px;
+                    }
+
+                    &.classic .submenu li.parent > a:after {
+                        content: '\e622';
+                        font-family: 'icons-blank-theme';
+                        display: inline-block;                        
+                        vertical-align: top;
+                        margin-left: 6px;
+                        margin-right: 5px;
+                        line-height: 38px;
+                        float: right;
+                        font-size: 22px;
+                    }
+                    &.fullwidth > .submenu, &.staticwidth > .submenu {
+                        left: 100% !important;
+                        top: 0;
+                        padding-bottom: 15px;
+                    }
+                    &.classic > .submenu {
+                        left: 100% !important;
+                        top: 0;
+                    }
+                    &.fullwidth > .submenu {
+                        width: 871px;
+                    }
+                    & > a {
+                        display: block;
+                        padding: 0 15px;
+                        line-height: 44px;
+                        font-weight: 400;
+                        font-size: 14px;
+
+                        > span.cat-label {
+                            position: relative;
+                            margin-left: 10px;
+                            padding: 0 2px;
+                            top: 0;
+                            right: 0;
+
+                            &:before {
+                                left: -6px;
+                                top: 3px;
+                                bottom: auto;
+                                border-top-color: transparent;
+                            }
+                            &.cat-label-label1 {
+                                &:before {
+                                    border-right-color: #0cc485;
+                                }
+                            }
+                            &.cat-label-label2 {
+                                &:before {
+                                    border-right-color: #eb2771;
+                                }
+                            }
+                            &.cat-label-label3 {
+                                &:before {
+                                    border-right-color: #0ae3eb;
+                                }
+                            }
+                        }
+                    }
+                    &:first-child > a {
+                        border-top: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .hlm-topmenu.navigation {
+        .submenu.level0 {
+            height: 0;
+            visibility: hidden;
+
+            &.opened {
+                visibility: visible;
+                height: auto;
+            }
+        }
+
+        li.level0 {
+            &.staticwidth {
+                > .submenu {
+                    width: auto !important;
+                }
+            }
+            &.fullwidth, &.staticwidth {
+                .menu-top-block, .menu-right-block, .menu-left-block, .menu-bottom-block {
+                    display: none;
+                }
+            }
+            .menu-thumb-img {
+                display: none;
+            }
+        }
+        li.ui-menu-item {
+            position: relative;
+
+            > a {
+                position: relative;
+            }
+            > .open-children-toggle {
+                display: block;
+                position: absolute;
+                width: 42px;
+                height: 42px;
+                right: 0;
+                top: 0;
+                z-index: 1;
+                cursor: pointer;
+            }
+        }
+        span.cat-label {
+            top: 50%;
+            right: 36px;
+            margin-top: -7px;
+            position: absolute;
+            text-transform: uppercase;
+            font: inherit;
+            font-size: 9px;
+            padding: 2px;
+            border-radius: 2px;
+            line-height: 1;
+            color: #fff;
+
+            &:before {
+                content: "";
+                position: absolute;
+                width: 3px;
+                height: 3px;
+                border: 3px solid transparent;
+                left: -6px;
+                bottom: 3px;
+            }
+            &.cat-label-label1 {
+                background-color: #0cc485;
+
+                &:before {
+                    border-right-color: #0cc485;
+                }
+            }
+            &.cat-label-label2 {
+                background-color: #eb2771;
+
+                &:before {
+                    border-right-color: #eb2771;
+                }
+            }
+            &.cat-label-label3 {
+                background-color: #0ae3eb;
+
+                &:before {
+                    border-right-color: #0ae3eb;
+                }
+            }
+        }
+    }
+}
+.hlm-topmenu.navigation li.level0.fullwidth .submenu li.level1 > a, 
+.hlm-topmenu.navigation li.level0.staticwidth .submenu li.level1 > a {
+    position: relative;
+}
+.hlm-topmenu.navigation li.level0.fullwidth .submenu li.level1 > a > span::after, 
+.hlm-topmenu.navigation li.level0.staticwidth .submenu li.level1 > a > span::after {
+    background: #ffffff none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 0;
+    margin-bottom: 10px;
+    position: relative;
+    top: 13px;
+    width: 20px;
+}
+@media only screen and (min-width: 768px) {
+    .sections.nav-sections.stickytop {
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    .page-wrapper {
+        .page-header {
+            .header {
+                &.content {
+                    padding: 25px 15px;
+                    .logo {
+                        margin: 0;
+                    }
+                }
+            }
+            .panel {
+                &.wrapper {
+                    .panel {
+                        &.header {
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+                    }
+                }
+            }
+            .switcher {
+                .options {
+                    display: inline-block;
+                    padding: 12px 0;
+                    position: relative;
+                    .switcher-trigger {
+                        border-top: medium none;
+                        color: @color-black;
+                        display: inline-block;
+                        padding: 0;
+                        position: relative;
+                        &:hover {
+                            background: transparent;
+                            border: none;
+                        }
+                        &.action {
+                            &.toggle {
+                                &.active {
+                                    &:after {
+                                        line-height: 18px;
+                                    }
+                                }
+                                &:after {
+                                    line-height: 18px;
+                                }
+                            }
+                        }
+                    }
+                    ul {
+                        &.dropdown {
+                            margin: 0;
+                            padding: 5px 0;
+                            box-shadow: none;
+                            -moz-box-shadow: none;
+                            -webkit-box-shadow: none;
+                            border: 1px solid #e1e1e1;
+                            border-top: none;
+                            left: -2px;
+                            &:after {
+                                border: none;
+                            }
+                            &:before {
+                                border: none;
+                            }
+                            > li {
+                                font-size: 13px;
+                                > a {
+                                    padding: 8px 15px;
+                                    color: @color-black-light;
+                                    text-decoration: none;
+                                    outline: none;
+                                    &:visited, &:active, &:focus {
+                                        color: @color-black-light;
+                                        text-decoration: none;
+                                        outline: none;
+                                    }
+                                }
+                                &:hover {
+                                    background: transparent;
+                                    > a {
+                                        color: @color-black;
+                                        background: transparent;
+                                        text-decoration: none;
+                                        outline: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .page-wrapper {
+        .panel {
+            &.header {
+                .header {
+                    &.links {
+                        > li {
+                            margin-bottom: 0;
+                            margin-right: 0;
+                            margin-top: 0;
+                            margin-left: 20px;
+                            > a {
+                                color: @color-black-light;
+                                transition: all 0.2s ease-in 0s;
+                                -webkit-transition: all 0.2s ease-in 0s;
+                                -moz-transition: all 0.2s ease-in 0s;
+                                padding: 12px 0;
+                                line-height: 18px;
+                                float: left;
+                                &:active, &:visited, &:focus {
+                                    color: @color-black-light;
+                                }
+                                &:hover {
+                                    color: @color-black;
+                                }
+                            }
+                            > span {
+                                color: @color-black-light;
+                                padding: 12px 0;
+                                line-height: 18px;
+                                float: left;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.header-contact-main {
+    border: 1px solid #e1e1e1;
+    float: right;
+    line-height: 40px;
+    margin: 5px 0 5px 15px;
+    padding: 0 15px;
+    > em {
+        display: inline-block;
+        font-size: 18px;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+    > span {
+        display: inline-block;
+        font-weight: normal;
+        vertical-align: top;
+    }
+}
+
+@media (min-width: 768px) {
+    .cms-index-index {
+        .top-menu-main {
+            margin-bottom: 0;
+        }
+    }
+    .page-wrapper {
+        .block-search {
+            width: 350px;
+            margin: 5px 0;
+            .block-content {
+                .field {
+                    &.search {
+                        .control {
+                            padding-bottom: 0;
+                            #search {
+                                border-color: #e1e1e1;
+                                height: 42px;
+                                margin: 0;
+                                padding-right: 45px;
+                                position: static;
+                            }
+                            .nested {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                .actions {
+                    .action {
+                        &.search {
+                            padding: 0;
+                            right: 0;
+                            height: 42px;
+                            width: 42px;
+                            transition: all 0.2s ease-in 0s;
+                            -webkit-transition: all 0.2s ease-in 0s;
+                            -moz-transition: all 0.2s ease-in 0s;
+                            &:before {
+                                content: "\f002";
+                                font-family: "Fontawesome";
+                                font-size: 15px;
+                                color: @color-black;
+                            }
+                            &:hover {
+                                &:before {
+                                    color: @color-black-light;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .block-search .action.search.disabled, 
+    .block-search .action.search[disabled], 
+    fieldset[disabled] .block-search .action.search {
+        opacity: 1;
+    }
+    .top-menu-main {
+        float: left;
+        width: 100%;
+        background: @color-black;
+        margin-bottom: 25px;
+        .page-main {
+            position: relative;
+        }
+        .minicart-wrapper {
+            position: absolute;
+            right: 15px;
+            top: 0;
+            z-index: 3;
+            > a {
+                &.action {
+                    &.showcart {
+                        background: #333333;
+                        display: block;
+                        line-height: 54px;
+                        padding: 0 15px;
+                        vertical-align: middle;
+                        white-space: nowrap;
+                        border-top: 2px solid transparent;
+                        transition: all 0.2s ease-in 0s;
+                        -webkit-transition: all 0.2s ease-in 0s;
+                        -moz-transition: all 0.2s ease-in 0s;
+                        &:before {
+                            line-height: 54px;
+                            content: "\f07a";
+                            font-family: "Fontawesome";
+                            font-size: 18px;
+                            color: #ffffff;
+                            margin-right: 10px;
+                        }
+                        &.active {
+                            background: #ffffff;
+                            border-top-color: @color-black;
+                            &:before {
+                                line-height: 54px;
+                                content: "\f07a";
+                                font-family: "Fontawesome";
+                                font-size: 18px;
+                                color: #333333;
+                                margin-right: 10px;
+                            }
+                            .text {
+                                color: @color-black;
+                            }
+                            .qty {
+                                color: @color-black;
+                            }
+                            &:hover {
+                                &:before {
+                                    color: @color-black;
+                                }
+                            }
+                        }
+                        &:hover {
+                            &:before {
+                                color: #ffffff;
+                            }
+                        }
+                        .text {
+                            display: inline-block;
+                            font-weight: 600;
+                            height: auto;
+                            margin: 0;
+                            position: static;
+                            text-transform: uppercase;
+                            vertical-align: top;
+                            width: auto;
+                            color: #ffffff;
+                        }
+                        .qty {
+                            height: auto;
+                            line-height: 54px;
+                            margin: 0;
+                            vertical-align: top;
+                            width: auto;
+                            background: transparent;
+                            font-weight: 600;
+                            &.empty {
+                                display: inline-block;
+                            }
+                        }
+
+                    }
+                }
+            }
+            .block-minicart {
+                right: 0;
+            }
+            .block-minicart {
+                margin: 0;
+                box-shadow: none;
+                -moz-box-shadow: none;
+                -webkit-box-shadow: none;
+                border: 1px solid #e1e1e1;
+                border-top: none;
+                &:after {
+                    border: none;
+                }
+                &:before {
+                    border: none;
+                }
+            }
+        }
+        .nav-sections {
+            margin-bottom: 0;
+            .navigation {
+                padding: 0 15px;
+                background: @color-black;
+                > ul {
+                    padding: 0;
+                    li {
+                        &.level0 {
+                            &.parent {
+                                > a {
+                                    &.level-top {
+                                        padding: 18px 28px 18px 20px;
+                                    }
+                                }
+                            }
+                            > a {
+                                &.level-top {
+                                    font-size: 14px;
+                                    font-weight: 600;
+                                    text-transform: uppercase;
+                                    display: block;
+                                    color: #ffffff;
+                                    line-height: 20px;
+                                    padding: 18px 20px;
+                                    transition: all 0.2s ease-in 0s;
+                                    -webkit-transition: all 0.2s ease-in 0s;
+                                    -moz-transition: all 0.2s ease-in 0s;
+                                    text-transform: uppercase;
+                                    &:visited, &:active, &:focus {
+                                        color: #ffffff;
+                                    }
+                                    &:hover {
+                                        color: #ffffff;
+                                        background: #333333;
+                                        border: none;
+                                    }
+                                    &.ui-state-focus {
+                                        color: #ffffff;
+                                        background: #333333;
+                                        border: none;
+                                    }
+                                    &.ui-state-active {
+                                        color: #ffffff;
+                                        background: #333333;
+                                        border: none;
+                                    }
+                                }
+                            }
+                            ul, div {
+                                &.submenu {
+                                    height: auto;
+                                    padding: 10px 0px;
+                                    border-style: solid;
+                                    border-width: 1px;
+                                    border-color: #e1e1e1;
+                                    background: #ffffff;
+                                    li {
+                                        margin-bottom: 0;
+                                        position: relative;
+                                        > a {
+                                            position: relative;
+                                            color: @color-black-light;
+                                            &:visited, &:active, &:focus {
+                                                color: @color-black-light;
+                                            }
+                                            &:hover {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                            &.ui-state-focus {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                            &.ui-state-active {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                        }
+                                        &.active {
+                                            > a {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                        }
+                                        &.has-active {
+                                            > a {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                        }
+                                    }
+                                    .subchildmenu {
+                                        .subchildmenu {
+                                            border-style: solid;
+                                            border-width: 1px;
+                                            border-color: #e1e1e1;
+                                            background: #ffffff;
+                                            height: auto;
+                                            padding: 10px 0;
+                                        }
+                                    }
+                                }
+                            }
+                            &.active {
+                                > a {
+                                    &.level-top {
+                                        color: #ffffff;
+                                        background: #333333;
+                                        border: none;
+                                    }
+                                }
+                            }
+                            &.has-active {
+                                > a {
+                                    &.level-top {
+                                        color: #ffffff;
+                                        background: #333333;
+                                        border: none;
+                                    }
+                                }
+                            }
+                        }
+                        &.staticwidth {
+                            ul, div {
+                                &.submenu {
+                                    height: auto;
+                                    padding: 10px;
+                                    border-style: solid;
+                                    border-width: 1px;
+                                    border-color: #e1e1e1;
+                                    background: #ffffff;
+                                    li {
+                                        margin-bottom: 0;
+                                        position: relative;
+                                        > a {
+                                            position: relative;
+                                            color: @color-black-light;
+                                            &:visited, &:active, &:focus {
+                                                color: @color-black-light;
+                                            }
+                                            &:hover {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                            &.ui-state-focus {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                            &.ui-state-active {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                        }
+                                        &.active {
+                                            > a {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                        }
+                                        &.has-active {
+                                            > a {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                        }
+                                        &.level1 {
+                                            > a {
+                                                position: relative;
+                                                color: #555555;
+                                                &:visited, &:active, &:focus {
+                                                    color: #555555;
+                                                }
+                                                &:hover {
+                                                    color: @color-black;
+                                                }
+                                                &.ui-state-focus {
+                                                    color: @color-black;
+                                                }
+                                                &.ui-state-active {
+                                                    color: @color-black;
+                                                }
+                                                > span {
+                                                    &:after {
+                                                        background: #555555;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .subchildmenu {
+                                        background: transparent !important;
+                                        .subchildmenu {
+                                            border-style: none;
+                                            border-width: none;
+                                            border-color: none;
+                                            height: auto;
+                                            padding: 10px 0;
+                                            background: transparent !important;
+                                            .subchildmenu {
+                                                border-style: none;
+                                                border-width: none;
+                                                border-color: none;
+                                                height: auto;
+                                                padding: 0;
+                                                background: transparent !important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &.fullwidth {
+                            ul, div {
+                                &.submenu {
+                                    height: auto;
+                                    padding: 10px;
+                                    border-style: solid;
+                                    border-width: 1px;
+                                    border-color: #e1e1e1;
+                                    background: #ffffff;
+                                    li {
+                                        margin-bottom: 0;
+                                        position: relative;
+                                        > a {
+                                            position: relative;
+                                            color: @color-black-light;
+                                            &:visited, &:active, &:focus {
+                                                color: @color-black-light;
+                                            }
+                                            &:hover {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                            &.ui-state-focus {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                            &.ui-state-active {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                        }
+                                        &.active {
+                                            > a {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                        }
+                                        &.has-active {
+                                            > a {
+                                                color: @color-black;
+                                                background: transparent;
+                                                border: none;
+                                            }
+                                        }
+                                        &.level1 {
+                                            > a {
+                                                position: relative;
+                                                color: #555555;
+                                                &:visited, &:active, &:focus {
+                                                    color: #555555;
+                                                }
+                                                &:hover {
+                                                    color: @color-black;
+                                                }
+                                                &.ui-state-focus {
+                                                    color: @color-black;
+                                                }
+                                                &.ui-state-active {
+                                                    color: @color-black;
+                                                }
+                                                > span {
+                                                    &:after {
+                                                        background: #555555;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .subchildmenu {
+                                        background: transparent !important;
+                                        .subchildmenu {
+                                            border-style: none;
+                                            border-width: none;
+                                            border-color: none;
+                                            height: auto;
+                                            padding: 10px 0;
+                                            background: transparent !important;
+                                            .subchildmenu {
+                                                border-style: none;
+                                                border-width: none;
+                                                border-color: none;
+                                                height: auto;
+                                                padding: 0;
+                                                background: transparent !important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    .cms-index-index {
+        .page-wrapper {
+            .page-header {
+                &.header-type2 {
+                    margin-bottom: 0;
+                    .nav-sections {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+    .page-wrapper {
+        .page-header {
+            &.header-type2 {
+                position: relative;
+                margin-bottom: 20px;
+                background: #f4f4f4;
+                .switcher {
+                    .options {
+                        display: inline-block;
+                        padding: 12px 0;
+                        position: relative;
+                        .switcher-trigger {
+                            border-top: medium none;
+                            color: @color-black;
+                            display: inline-block;
+                            padding: 0;
+                            position: relative;
+                            &:hover {
+                                background: transparent;
+                                border: none;
+                            }
+                        }
+                        ul {
+                            &.dropdown {
+                                border: 1px solid #e1e1e1;
+                            }
+                        }
+                    }
+                }
+                .panel {
+                    &.wrapper {
+                        background: transparent;
+                        border-bottom: 1px solid #e1e1e1;
+                        .panel {
+                            &.header {
+                                background: transparent;
+                            }
+                        }
+                    }
+                }
+                .header {
+                    &.content {
+                        padding: 0 15px;
+                        .logo-block {
+                            float: left;
+                            display: table;
+                            height: 100px;
+                            .logo {
+                                margin: 0;
+                                max-width: 100%;
+                                display: table-cell;
+                                height: 100px;
+                                vertical-align: middle;
+                                float: none;                                
+                                img {
+                                    margin: 0 auto;
+                                    display: block;
+                                    max-width: 100%;
+                                }
+                            }
+                        }
+                        .minicart-wrapper {
+                            margin: 0 0 0 20px;
+                            background: @color-yellow;
+                            .action {
+                                &.showcart {
+                                    text-align: center;
+                                    padding: 12px 40px;
+                                    transition: all 0.2s ease-in 0s;
+                                    -webkit-transition: all 0.2s ease-in 0s;
+                                    -moz-transition: all 0.2s ease-in 0s;
+                                    position: relative;
+                                    &:before {
+                                        color: #ffffff;
+                                        line-height: 30px;
+                                        content: "\f07a";
+                                        font-family: "Fontawesome";
+                                        font-size: 20px;
+                                        font-weight: normal;
+                                        text-align: center;
+                                    }
+                                    &:focus, &:visited, &:active {
+                                        &:before {
+                                            color: #ffffff;
+                                        }
+                                    }
+                                    &:hover {
+                                        &:before {
+                                            color: #ffffff;
+                                        }
+                                    }
+                                    &.active {
+                                        &:before {
+                                            color: #ffffff;
+                                            line-height: 30px;
+                                            content: "\f07a";
+                                            font-family: "Fontawesome";
+                                            font-size: 20px;
+                                            font-weight: normal;
+                                            text-align: center;
+                                        }
+                                    }
+                                    .text {
+                                        position: static;
+                                        width: auto;
+                                        height: auto;
+                                        display: block;
+                                        color: #ffffff;
+                                        text-transform: uppercase;
+                                        font-weight: 600;
+                                        font-size: 16px;
+                                        text-align: center;
+                                        line-height: 24px;
+                                    }
+                                    .counter {
+                                        &.qty {
+                                            background: transparent;
+                                            color: #ffffff;
+                                            display: block;
+                                            font-size: 13px;
+                                            height: auto;
+                                            line-height: 24px;
+                                            margin: 0;
+                                            padding: 0;
+                                            text-align: center;
+                                            vertical-align: middle;
+                                            white-space: normal;
+                                            width: auto;
+                                            position: relative;
+                                            .counter-number {
+                                                &:after {
+                                                    content: "Item(s)";
+                                                    margin-left: 4px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .block-minicart {
+                                box-shadow: none;
+                                -moz-box-shadow: none;
+                                -webkit-box-shadow: none;
+                                border-color: #e1e1e1;
+                                right: 0;
+                                margin: 0;
+                                &:before {
+                                    border: none;
+                                }
+                                &:after {
+                                    border: none;
+                                }
+                            }
+                        }
+                    }
+                }
+                .panel {
+                    &.header {
+                        .header {
+                            &.links {
+                                > li {
+                                    margin-bottom: 0;
+                                    margin-right: 0;
+                                    margin-top: 0;
+                                    margin-left: 20px;
+                                    > a {
+                                        color: @color-black;
+                                        transition: all 0.2s ease-in 0s;
+                                        -webkit-transition: all 0.2s ease-in 0s;
+                                        -moz-transition: all 0.2s ease-in 0s;
+                                        padding: 12px 0;
+                                        line-height: 18px;
+                                        float: left;
+                                        &:hover {
+                                            color: @color-black-light;
+                                        }
+                                    }
+                                    > span {
+                                        color: @color-black;
+                                        padding: 12px 0;
+                                        line-height: 18px;
+                                        float: left;
+                                    }
+                                    &.customer-welcome {
+                                        + .authorization-link {
+                                            display: none;
+                                        }
+                                        .action {
+                                            &.switch {
+                                                color: #333333;
+                                                &:hover {
+                                                    color: @color-black;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .top-menu-block {
+                    > .page-main {
+                        position: relative;
+                    }
+                    .header-social-block {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        position: absolute;
+                        top: -50px;
+                        right: 15px;
+                        background: #555555;
+                        color: #ffffff;
+                        height: 50px;
+                        width: 152px;
+                        text-align: center;
+                        z-index: 3;
+                        > li {
+                            display: inline-block;
+                            margin: 0;
+                            > a {
+                                line-height: 50px;
+                                padding: 0 8px;
+                                font-size: 14px;
+                                display: block;
+                                > em {
+                                    color: #ffffff;                                    
+                                }
+                                &:hover {
+                                    > em {
+                                        color: @theme-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .nav-sections {
+                    background: @color-black-light;
+                    margin-bottom: 0;
+                    .nav-sections-item-content {
+                        > .switcher {
+                            display: none;
+                        }
+                    }
+                    .navigation {
+                        padding: 0 15px;
+                        background: transparent;
+                        > ul {
+                            background: transparent;
+                            padding: 0;
+                            li {
+                                &.level0 {
+                                    &.parent {
+                                        > a {
+                                            &.level-top {
+                                                padding: 15px 24px 15px 18px;
+                                            }
+                                        }
+                                    }
+                                    > a {
+                                        &.level-top {
+                                            font-size: 14px;
+                                            font-weight: 700;
+                                            text-transform: uppercase;
+                                            display: block;
+                                            color: #ffffff;
+                                            line-height: 20px;
+                                            padding: 15px 18px;
+                                            transition: all 0.2s ease-in 0s;
+                                            -webkit-transition: all 0.2s ease-in 0s;
+                                            -moz-transition: all 0.2s ease-in 0s;
+                                            text-transform: uppercase;
+                                            &:visited, &:active, &:focus {
+                                                color: #ffffff;
+                                            }
+                                            &:hover {
+                                                color: #ffffff;
+                                                background: @theme-color;
+                                                border: none;
+                                            }
+                                            &.ui-state-focus {
+                                                color: #ffffff;
+                                                background: @theme-color;
+                                                border: none;
+                                            }
+                                            &.ui-state-active {
+                                                color: #ffffff;
+                                                background: @theme-color;
+                                                border: none;
+                                            }
+                                        }
+                                    }
+                                    ul, div {
+                                        &.submenu {
+                                            text-align: left;
+                                            height: auto;
+                                            padding: 10px 0px;
+                                            border-style: solid;
+                                            border-width: 1px;
+                                            border-color: #e1e1e1;
+                                            background: #ffffff;
+                                            li {
+                                                margin-bottom: 0;
+                                                position: relative;
+                                                > a {
+                                                    position: relative;
+                                                    color: @color-black-light;
+                                                    &:visited, &:active, &:focus {
+                                                        color: @color-black-light;
+                                                    }
+                                                    &:hover {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                    &.ui-state-focus {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                    &.ui-state-active {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                }
+                                                &.active {
+                                                    > a {
+                                                        color: @color-black;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                }
+                                                &.has-active {
+                                                    > a {
+                                                        color: @color-black;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                }
+                                            }
+                                            .subchildmenu {
+                                                .subchildmenu {
+                                                    border-style: solid;
+                                                    border-width: 1px;
+                                                    border-color: #e1e1e1;
+                                                    background: #ffffff;
+                                                    height: auto;
+                                                    padding: 10px 0;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.active {
+                                        > a {
+                                            &.level-top {
+                                                color: #ffffff;
+                                                background: @theme-color;
+                                                border: none;
+                                            }
+                                        }
+                                    }
+                                    &.has-active {
+                                        > a {
+                                            &.level-top {
+                                                color: #ffffff;
+                                                background: @theme-color;
+                                                border: none;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.staticwidth {
+                                    ul, div {
+                                        &.submenu {
+                                            text-align: left;
+                                            height: auto;
+                                            padding: 10px;
+                                            border-style: solid;
+                                            border-width: 1px;
+                                            border-color: #e1e1e1;
+                                            background: #ffffff;
+                                            li {
+                                                margin-bottom: 0;
+                                                position: relative;
+                                                > a {
+                                                    position: relative;
+                                                    color: @color-black-light;
+                                                    &:visited, &:active, &:focus {
+                                                        color: @color-black-light;
+                                                    }
+                                                    &:hover {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                    &.ui-state-focus {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                    &.ui-state-active {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                }
+                                                &.active {
+                                                    > a {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                }
+                                                &.has-active {
+                                                    > a {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                }
+                                                &.level1 {
+                                                    > a {
+                                                        position: relative;
+                                                        color: @color-black;
+                                                        > span {
+                                                            &:after {
+                                                                background: @color-black;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            .subchildmenu {
+                                                background: transparent !important;
+                                                .subchildmenu {
+                                                    border-style: none;
+                                                    border-width: none;
+                                                    border-color: none;
+                                                    height: auto;
+                                                    padding: 10px 0;
+                                                    background: transparent !important;
+                                                    .subchildmenu {
+                                                        border-style: none;
+                                                        border-width: none;
+                                                        border-color: none;
+                                                        height: auto;
+                                                        padding: 0;
+                                                        background: transparent !important;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                &.fullwidth {
+                                    ul, div {
+                                        &.submenu {
+                                            text-align: left;
+                                            height: auto;
+                                            padding: 10px;
+                                            border-style: solid;
+                                            border-width: 1px;
+                                            border-color: #e1e1e1;
+                                            background: #ffffff;
+                                            li {
+                                                margin-bottom: 0;
+                                                position: relative;
+                                                > a {
+                                                    position: relative;
+                                                    color: @color-black-light;
+                                                    &:visited, &:active, &:focus {
+                                                        color: @color-black-light;
+                                                    }
+                                                    &:hover {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                    &.ui-state-focus {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                    &.ui-state-active {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                }
+                                                &.active {
+                                                    > a {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                }
+                                                &.has-active {
+                                                    > a {
+                                                        color: @theme-color;
+                                                        background: transparent;
+                                                        border: none;
+                                                    }
+                                                }
+                                                &.level1 {
+                                                    > a {
+                                                        position: relative;
+                                                        color: @color-black;
+                                                        > span {
+                                                            &:after {
+                                                                background: @color-black;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            .subchildmenu {
+                                                background: transparent !important;
+                                                .subchildmenu {
+                                                    border-style: none;
+                                                    border-width: none;
+                                                    border-color: none;
+                                                    height: auto;
+                                                    padding: 10px 0;
+                                                    background: transparent !important;
+                                                    .subchildmenu {
+                                                        border-style: none;
+                                                        border-width: none;
+                                                        border-color: none;
+                                                        height: auto;
+                                                        padding: 0;
+                                                        background: transparent !important;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: 1200px) {
+    .page-wrapper {
+        .page-header {
+            &.header-type2 {
+                .header {
+                    &.content {
+                        .top-links {
+                            float: right;
+                            display: table;
+                            height: 60px;
+                            width: 340px;
+                            margin: 20px 0;
+                            .header-links {
+                                padding: 0;
+                                margin: 0;
+                                list-style: none;
+                                display: table-cell;
+                                vertical-align: middle;
+                                height: 100%;
+                                text-align: right;
+                                #header-links-main {
+                                    > #links-tog-btn {
+                                        display: none !important;
+                                    }
+                                    > .ui-widget {
+                                        &.ui-widget-content {
+                                            display: block !important;
+                                            .block-content {
+                                                &.dropdown {
+                                                    margin-bottom: 0;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .header-link-menu {
+                                    display: block;
+                                    padding: 5px 0 8px;
+                                    .header {
+                                        &.links {
+                                            list-style: none;
+                                            margin: 0;
+                                            padding: 0;
+                                            display: block;
+                                            > li {
+                                                display: inline-block;
+                                                margin: 0;
+                                                &.item {
+                                                    &.compare {
+                                                        > a {
+                                                            &.compare {
+                                                                &.no-display {
+                                                                    display: none;
+                                                                }
+                                                            }
+
+                                                        }
+                                                    }
+                                                }
+                                                > a {
+                                                    display: block;
+                                                    margin-right: 12px;
+                                                    font-size: 11px;
+                                                    text-transform: capitalize;
+                                                    color: @color-black;
+                                                    font-weight: 500;
+                                                    &:active, &:visited, &:focus {
+                                                        color: @color-black;
+                                                    }
+                                                    &:hover {
+                                                        color: @theme-color;
+                                                    }
+                                                    &.register {
+                                                        display: none;
+                                                    }
+                                                }
+                                                > span {
+                                                    display: block;
+                                                    margin-right: 12px;
+                                                    font-size: 11px;
+                                                    text-transform: capitalize;
+                                                    color: @color-black;
+                                                    font-weight: 500;
+                                                }
+                                                &:last-child {
+                                                    > a {
+                                                        margin-right: 0;
+                                                    }
+                                                    > span {
+                                                        margin-right: 0;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }                            
+                            }
+                        }
+                        #search-tog-block {
+                            float: right;
+                            margin: 28px 10px 28px 0;
+                            padding-left: 0;
+                            width: 360px;
+                            #search-tog-btn {
+                                display: none !important;
+                            }
+                            .ui-widget {
+                                &.ui-widget-content {
+                                    display: block !important;
+                                }
+                            }
+                            .block-content {
+                                &.dropdown {
+                                    display: block !important;
+                                    margin: 0;
+                                    .field {
+                                        &.search {
+                                            .control {
+                                                #search {                                                
+                                                    border: 1px solid #e1e1e1;
+                                                    height: 44px;
+                                                    margin: 0;
+                                                    padding-right: 50px;
+                                                    &:focus {
+                                                        box-shadow: none;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .actions {
+                                        .action {
+                                            &.search {
+                                                height: 44px;
+                                                padding: 0;
+                                                right: 0;
+                                                width: 44px;
+                                                position: absolute;
+                                                top: 0;
+                                                right: 0;
+                                                background: transparent;
+                                                border: none;
+                                                font-size: 16px;
+                                                color: @theme-color;
+                                                &:hover {
+                                                    color: @color-black;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 1199px) {
+    .page-wrapper {
+        .page-header {
+            &.header-type2 {
+                .header {
+                    &.content {
+                        .top-links {
+                            float: right;
+                            .header-links {
+                                float: right;
+                                margin-right: 10px;
+                                position: relative;
+                                width: 50px;
+                                #header-links-main {
+                                    #links-tog-btn {
+                                        text-align: center;
+                                        min-width: 20px;
+                                        > a {
+                                            color: @color-black;
+                                            font-size: 20px;
+                                            line-height: 44px;
+                                            display: block;
+                                            margin: 28px 0 28px 0;
+                                            transition: all 0.2s ease-in 0s;
+                                            -moz-transition: all 0.2s ease-in 0s;
+                                            -webkit-transition: all 0.2s ease-in 0s;
+                                            &:visited, &:active, &:focus {
+                                                color: @color-black;
+                                            }
+                                            &:hover {
+                                                color: @theme-color;
+                                            }
+                                            .icon-user {
+                                                display: block;
+                                            }
+                                            .icon-close {
+                                                display: none;
+                                            }
+                                        }
+                                        &.active {
+                                            > a {
+                                                .icon-user {
+                                                    display: none;
+                                                }
+                                                .icon-close {
+                                                    display: block;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.active {
+                                        .block-content {
+                                            &.dropdown {
+                                                display: block;
+                                            }
+                                        }
+                                    }
+                                    .block-content {
+                                        &.dropdown {
+                                            margin: 0;
+                                            position: absolute;
+                                            right: -10px;
+                                            top: 100%;
+                                            background: #ffffff;
+                                            z-index: 6;
+                                            width: 225px;
+                                            border: 1px solid #e1e1e1;
+                                            padding: 15px;
+                                            display: none;
+                                            .header-link-menu {
+                                                display: block;
+                                                .header {
+                                                    &.links {
+                                                        list-style: outside none none;
+                                                        margin: 0;
+                                                        padding: 0;
+                                                        text-align: left;
+                                                        > li {
+                                                            display: block;
+                                                            margin-bottom: 10px;
+                                                            a {
+                                                                color: @color-black-light;
+                                                                display: block;
+                                                                text-decoration: none;
+                                                                &:visited, &:focus, &:active {
+                                                                    color: @color-black-light;
+                                                                    text-decoration: none;
+                                                                }
+                                                                &:hover {
+                                                                    color: @theme-color;
+                                                                    text-decoration: none;
+                                                                }
+                                                            }
+                                                            span {
+                                                                color: @color-black-light;
+                                                                &:hover {
+                                                                    color: @theme-color;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        #search-tog-block {
+                            width: 50px;
+                            float: right;
+                            padding-left: 0;
+                            margin: 0;
+                            position: relative;
+                            #search-tog-btn {
+                                text-align: center;
+                                min-width: 20px;
+                                position: relative;
+                                > a {
+                                    color: @color-black;
+                                    font-size: 20px;
+                                    line-height: 44px;
+                                    display: block;
+                                    margin: 28px 0 28px 0;
+                                    transition: all 0.2s ease-in 0s;
+                                    -moz-transition: all 0.2s ease-in 0s;
+                                    -webkit-transition: all 0.2s ease-in 0s;
+                                    &:visited, &:active, &:focus {
+                                        color: @color-black;
+                                    }
+                                    &:hover {
+                                        color: @theme-color;
+                                    }
+                                    .icon-search {
+                                        display: block;
+                                    }
+                                    .icon-close {
+                                        display: none;
+                                    }
+                                }
+                                &.active {
+                                    > a {
+                                        .icon-search {
+                                            display: none;
+                                        }
+                                        .icon-close {
+                                            display: block;
+                                            color: @theme-color;
+                                        }
+                                    }
+                                }
+                            }
+                            .block-content {
+                                &.dropdown {
+                                    display: none;
+                                    min-width: 350px;
+                                    position: absolute;
+                                    right: -10px;
+                                    margin: 0;
+                                    top: 100%;
+                                    z-index: 6;
+                                    .field {
+                                        &.search {
+                                            .control {
+                                                #search {                                                
+                                                    border: 1px solid #e1e1e1;
+                                                    height: 50px;
+                                                    margin: 0;
+                                                    padding-right: 50px;
+                                                    &:focus {
+                                                        box-shadow: none;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .actions {
+                                        .action {
+                                            &.search {
+                                                height: 50px;
+                                                padding: 0;
+                                                right: 0;
+                                                width: 50px;
+                                                position: absolute;
+                                                top: 0;
+                                                right: 0;
+                                                background: transparent;
+                                                border: none;
+                                                font-size: 16px;
+                                                color: @theme-color;
+                                                &:hover {
+                                                    color: @color-black;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .cms-index-index .page-wrapper .page-header {
+        margin-bottom: 0;
+    }
+    .header-contact-main {
+        display: none;
+    }
+    .page-wrapper {
+        .top-menu-main {
+            .switcher {
+                .options {
+                    .lib-dropdown(
+                        @_dropdown-actions-padding: 0,
+                        @_dropdown-list-item-padding: 0,
+                        @_dropdown-toggle-icon-content: @icon-down,
+                        @_dropdown-toggle-active-icon-content: @icon-up,
+                        @_icon-font-text-hide: true,
+                        @_icon-font-size: 22px,
+                        @_icon-font-line-height: 22px,
+                        @_dropdown-list-min-width: 160px
+                        );
+                    ul.dropdown {
+                        a {
+                            display: block;
+                            padding: 8px;
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+
+                .label {
+                    &:extend(.abs-visually-hidden all);
+                }
+            }
+            .nav-toggle {
+                top: 9px;
+                &:before {
+                    color: #222222;
+                }
+                &:hover {
+                    &:before {
+                        color: @color-black-light;
+                    }
+                }
+            }
+            .minicart-wrapper {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                width: 38px;
+                margin-left: 15px;
+                position: absolute;
+                right: 0;
+                top: 2px;
+                .action {
+                    &.showcart {
+                        text-align: center;
+                        transition: all 0.2s ease-in 0s;
+                        -webkit-transition: all 0.2s ease-in 0s;
+                        -moz-transition: all 0.2s ease-in 0s;
+                        position: relative;
+                        &:before {
+                            color: #222222;
+                            line-height: 40px;
+                            content: "\f07a";
+                            font-family: "Fontawesome";
+                            font-size: 28px;
+                            font-weight: normal;
+                            text-align: center;
+                        }
+                        &:focus, &:visited, &:active {
+                            &:before {
+                                color: #222222;
+                            }
+                        }
+                        &:hover {
+                            &:before {
+                                color: @color-black-light;
+                            }
+                        }
+                        &.active {
+                            &:before {
+                                color: @color-black-light;
+                                line-height: 40px;
+                                content: "\f07a";
+                                font-family: "Fontawesome";
+                                font-size: 28px;
+                                font-weight: normal;
+                                text-align: center;
+                            }
+                        }
+                        .counter {
+                            &.qty {
+                                background: @color-black-extra-light;
+                                border-radius: 50%;
+                                color: #ffffff;
+                                display: inline-block;
+                                font-size: 12px;
+                                height: 22px;
+                                line-height: 22px;
+                                margin: 0;
+                                min-width: 18px;
+                                overflow: hidden;
+                                padding: 0;
+                                position: absolute;
+                                right: -10px;
+                                text-align: center;
+                                top: 0;
+                                vertical-align: middle;
+                                white-space: normal;
+                                width: 22px;
+                            }
+                        }
+                    }
+                }
+                .block-minicart {
+                    box-shadow: none;
+                    -moz-box-shadow: none;
+                    -webkit-box-shadow: none;
+                    border-color: #e1e1e1;
+                    right: 0;
+                    margin: 0;
+                    &:before {
+                        border: none;
+                    }
+                    &:after {
+                        border: none;
+                    }
+                }
+            }
+            .nav-sections {
+                margin-bottom: 0;
+                background: #ffffff;
+                .navigation {
+                    background: transparent;
+                    > ul {
+                        padding: 0;
+                        li {
+                            &.level0 {
+                                padding-top: 0;
+                                padding-bottom: 0;
+                                border-color: #e1e1e1;
+                                &:first-child {
+                                    border-top: none;
+                                }
+                                .row {
+                                    margin: 0 !important;
+                                }
+                                > a {
+                                    &.level-top {
+                                        color: @color-black;
+                                        font-size: 14px;
+                                        font-weight: 600;
+                                        overflow-wrap: break-word;
+                                        padding: 10px 36px 10px 15px;
+                                        text-transform: uppercase;
+                                        > span {
+                                            margin-left: 0 !important;
+                                        }
+                                        &:active, &:visited, &:focus {
+                                            color: @color-black;
+                                        }
+                                        &:hover {
+                                            color: @color-black-light;
+                                            background: transparent;
+                                            border: none;
+                                        }
+                                        &.ui-state-focus {
+                                            color: @color-black-light;
+                                            background: transparent;
+                                            border: none;
+                                        }
+                                        &.ui-state-active {
+                                            color: @color-black-light;
+                                            background: transparent;
+                                            border: none;
+                                        }
+                                        &:after {
+                                            right: 7px;
+                                            top: -3px;
+                                            font-size: 34px;
+                                        }
+                                    }
+                                }
+                                &.active {
+                                    > a {
+                                        &.level-top {
+                                            color: @color-black-light;
+                                            background: transparent;
+                                            border: none;
+                                        }
+                                    }
+                                }
+                                &.has-active {
+                                    > a {
+                                        &.level-top {
+                                            color: @color-black-light;
+                                            background: transparent;
+                                            border: none;
+                                        }
+                                    }
+                                }
+                                ul, div {
+                                    &.submenu {
+                                        border: none;
+                                        li {
+                                            position: relative;
+                                            > a {
+                                                position: relative;
+                                                color: #333333;
+                                                padding: 10px 0 10px 15px;
+                                                font-size: 14px;
+                                                font-weight: 600;
+                                                text-transform: uppercase;
+                                                &:visited, &:active, &:focus {
+                                                    color: #333333;
+                                                }
+                                                > span {
+                                                    margin-left: 0 !important;
+                                                }
+                                                &:hover {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                                &.ui-state-focus {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                                &.ui-state-active {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                            &.active {
+                                                > a {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                            &.has-active {
+                                                > a {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+
+                                                }
+                                            }
+                                        }
+                                        .subchildmenu {
+                                            padding-left: 0;
+                                            > li {
+                                                border-top: 1px solid #e1e1e1;
+                                                > a {
+                                                    padding-left: 25px;
+                                                }
+                                                .subchildmenu {
+                                                    > li {
+                                                        > a {
+                                                            padding-left: 35px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.staticwidth {
+                                ul, div {
+                                    &.submenu {
+                                        border: none;
+                                        li {
+                                            margin-bottom: 0;
+                                            position: relative;
+                                            > a {
+                                                position: relative;
+                                                color: #333333;
+                                                padding: 10px 0 10px 15px;
+                                                font-size: 14px;
+                                                font-weight: 600;
+                                                text-transform: uppercase;
+                                                &:visited, &:active, &:focus {
+                                                    color: #333333;
+                                                }
+                                                > span {
+                                                    margin-left: 0 !important;
+                                                }
+                                                &:hover {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                                &.ui-state-focus {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                                &.ui-state-active {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                            &.active {
+                                                > a {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                            &.has-active {
+                                                > a {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                            &.level1 {
+                                                > a {
+                                                    > span {
+                                                        &:after {
+                                                            display: none;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .subchildmenu {
+                                            padding-left: 0;
+                                            > li {
+                                                border-top: 1px solid #e1e1e1;
+                                                > a {
+                                                    padding-left: 25px;
+                                                }
+                                                .subchildmenu {
+                                                    > li {
+                                                        > a {
+                                                            padding-left: 35px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.fullwidth {
+                                ul, div {
+                                    &.submenu {
+                                        border: none;
+                                        li {
+                                            margin-bottom: 0;
+                                            position: relative;
+                                            > a {
+                                                position: relative;
+                                                color: #333333;
+                                                padding: 10px 0 10px 15px;
+                                                font-size: 14px;
+                                                font-weight: 600;
+                                                text-transform: uppercase;
+                                                &:visited, &:active, &:focus {
+                                                    color: #333333;
+                                                }
+                                                > span {
+                                                    margin-left: 0 !important;
+                                                }
+                                                &:hover {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                                &.ui-state-focus {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                                &.ui-state-active {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                            &.active {
+                                                > a {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                            &.has-active {
+                                                > a {
+                                                    color: @color-black-light;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                            &.level1 {
+                                                > a {
+                                                    > span {
+                                                        &:after {
+                                                            display: none;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .subchildmenu {
+                                            padding-left: 0;
+                                            > li {
+                                                border-top: 1px solid #e1e1e1;
+                                                > a {
+                                                    padding-left: 25px;
+                                                }
+                                                .subchildmenu {
+                                                    > li {
+                                                        > a {
+                                                            padding-left: 35px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .header {
+                    &.links {
+                        > li {
+                            text-transform: uppercase;
+                            font-size: 13px;
+                            font-weight: 600;
+                            > span {
+                                color: @color-black;
+                            }
+                            > a {
+                                color: @color-black;
+                                &:active, &:focus, &:visited {
+                                    color: @color-black;
+                                }
+                                &:hover {
+                                    color: @color-black-light;
+                                }
+                            }
+                        }
+                    }
+                }
+                .switcher {
+                    font-size: 14px;
+                    font-weight: 600;
+                    .switcher-label {
+                        > span {
+                            color: @color-black;
+                        }
+                    }
+                    .options {
+                        .action {
+                            &.toggle {
+                                &.switcher-trigger {
+                                    > strong {
+                                        &:after {
+                                            top: -10px;
+                                            font-size: 30px;
+                                        }
+                                    }
+                                }
+                                &.active {
+                                    &:after {
+                                        content: "";
+                                        display: none;
+                                    }
+                                }
+                                &:after {
+                                    content: "";
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                    ul {
+                        &.dropdown {
+                            padding: 5px 0;
+                            box-shadow: none;
+                            border: 1px solid #e1e1e1;
+                            &:before {
+                                border: none;
+                            }
+                            &:after {
+                                border: none;
+                            }
+                            > li {
+                                font-size: 13px;
+                                > a {
+                                    padding: 8px 15px;
+                                    color: @color-black-light;
+                                    text-decoration: none;
+                                    outline: none;
+                                    &:visited, &:active, &:focus {
+                                        color: @color-black-light;
+                                        text-decoration: none;
+                                        outline: none;
+                                    }
+                                }
+                                &:hover {
+                                    background: transparent;
+                                    > a {
+                                        color: @color-black;
+                                        background: transparent;
+                                        text-decoration: none;
+                                        outline: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .page-header {
+            &.header-type1 {
+                .header {
+                    &.content {
+                        .nav-toggle {
+                            top: 9px;
+                            &:before {
+                                color: #333333;
+                                font-weight: 600;
+                            }
+                        }
+                        .logo {
+                            margin-bottom: 11px;
+                        }
+                    }
+                }
+                .block-search {
+                    .field {
+                        &.search {
+                            .label {
+                                margin-right: 40px;
+                                &:before {
+                                    color: #222222;
+                                    line-height: 36px;
+                                }
+                                &:hover {
+                                    &:before {
+                                        color: @color-black-light;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 767px) {
+    .cms-index-index {
+        .page-wrapper {
+            .page-header {
+                &.header-type2 {
+                    background: #f4f4f4;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .page-wrapper {
+        .page-header {
+            &.header-type2 {
+                background: #f4f4f4;
+                margin-bottom: 20px;
+                .nav-sections {
+                    .switcher {
+                        font-size: 14px;
+                        font-weight: 600;
+                        .options {
+                            .action {
+                                &.toggle {
+                                    &.switcher-trigger {
+                                        > strong {
+                                            &:after {
+                                                top: -10px;
+                                                font-size: 30px;
+                                            }
+                                        }
+                                    }
+                                    &.active {
+                                        &:after {
+                                            content: "";
+                                            display: none;
+                                        }
+                                    }
+                                    &:after {
+                                        content: "";
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                        ul {
+                            &.dropdown {
+                                padding: 5px 0;
+                                box-shadow: none;
+                                border: 1px solid #e1e1e1;
+                                &:before {
+                                    border: none;
+                                }
+                                &:after {
+                                    border: none;
+                                }
+                                > li {
+                                    font-size: 13px;
+                                    > a {
+                                        padding: 8px 15px;
+                                        color: @color-black-light;
+                                        text-decoration: none;
+                                        outline: none;
+                                        &:visited, &:active, &:focus {
+                                            color: @color-black-light;
+                                            text-decoration: none;
+                                            outline: none;
+                                        }
+                                    }
+                                    &:hover {
+                                        background: transparent;
+                                        > a {
+                                            color: @color-black;
+                                            background: transparent;
+                                            text-decoration: none;
+                                            outline: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .header {
+                    &.content {
+                        .logo-block {
+                            display: table;
+                            height: 70px;
+                            float: left;
+                            padding-bottom: 9px;
+                            .logo {
+                                float: none;
+                                display: table-cell;
+                                vertical-align: middle;
+                                margin: 0;
+                                padding-left: 36px;
+                                max-width: 100%;
+                            }
+                            .nav-toggle {
+                                left: 16px;
+                                top: 14px;
+                                &:before {
+                                    font-size: 30px;
+                                    color: @color-black;
+                                    font-weight: 600;
+                                }
+                                &:hover {
+                                    &:before {
+                                        color: @theme-color;
+                                    }
+                                }
+                            }
+                        }
+                        #search-tog-block {
+                            margin: 0 30px 0 0;
+                            position: static;
+                            width: auto;
+                            #search-tog-btn {
+                                margin: 0;
+                                > a {
+                                    color: #333333;
+                                    font-size: 22px;
+                                    line-height: 34px;
+                                    margin: 14px 0 22px;
+                                    &:visited, &:active, &:focus {
+                                        color: @theme-color;
+                                    }
+                                    &:hover {
+                                        color: @color-black;
+                                    }
+                                    .icon-search {
+                                        display: block;
+                                    }
+                                    .icon-close {
+                                        display: none;
+                                    }
+                                }
+                                &.active {
+                                    > a {
+                                        .icon-search {
+                                            display: none;
+                                        }
+                                        .icon-close {
+                                            display: block;
+                                        }
+                                    }
+                                }
+                            }
+                            &.active {
+                                .block-content {
+                                    &.dropdown {                                    
+                                        display: block;
+                                    }
+                                }
+                            }
+                            .block-content {
+                                &.dropdown {
+                                    margin: 0;
+                                    display: none;
+                                    position: absolute;
+                                    left: 0;
+                                    right: 0;
+                                    top: 100%;
+                                    z-index: 6;
+                                    width: 100%;
+                                    min-width: 300px;
+                                }
+                            }
+                        }
+                        .minicart-wrapper {
+                            float: right;
+                            .block-content {
+                                .subtitle {
+                                    &.empty {
+                                        padding: 8px 0 8px;
+                                    }
+                                }
+                                #minicart-widgets {
+                                    margin-top: 0;
+                                }
+                            }
+                            .action {
+                                &.showcart {
+                                    margin: 14px 0 22px;
+                                    min-width: 25px;
+                                    &:before {
+                                        font-size: 22px;
+                                        line-height: 32px;
+                                        color: @color-black;
+                                        content: "\f290";
+                                        font-family: "Fontawesome";
+                                    }
+                                    &:hover {
+                                        &:before {
+                                            font-size: 22px;
+                                            line-height: 32px;
+                                            color: @theme-color;
+                                            content: "\f290";
+                                            font-family: "Fontawesome";
+                                        }
+                                    }
+                                    &.active {
+                                        &:before {
+                                            font-size: 22px;
+                                            line-height: 32px;
+                                            color: @theme-color;
+                                            content: "\f00d";
+                                            font-family: "Fontawesome";
+                                        }
+                                    }
+                                }
+                            }
+                            .block-minicart {
+                                box-shadow: none;
+                                -moz-box-shadow: none;
+                                -webkit-box-shadow: none;
+                                border-color: #e1e1e1;
+                                right: 0;
+                                margin: 0;
+                                &:before {
+                                    border: none;
+                                }
+                                &:after {
+                                    border: none;
+                                }
+                            }
+                        }
+                        .top-links {
+                            .header-links {
+                                float: right;
+                                margin-right: 30px;
+                                position: relative;
+                                width: auto;
+                                #header-links-main {
+                                    #links-tog-btn {
+                                        margin: 0;
+                                        > a {
+                                            color: @color-black;
+                                            font-size: 22px;
+                                            line-height: 34px;
+                                            margin: 14px 0 22px;
+                                            &:visited, &:active, &:focus {
+                                                color: @color-black;
+                                            }
+                                            &:hover {
+                                                color: @theme-color;
+                                            }
+                                            .icon-user {
+                                                display: block;
+                                            }
+                                            .icon-close {
+                                                display: none;
+                                            }
+                                        }
+                                        &.active {
+                                            > a {
+                                                .icon-user {
+                                                    display: none;
+                                                }
+                                                .icon-close {
+                                                    display: block;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.active {
+                                        .block-content {
+                                            &.dropdown {
+                                                display: block;
+                                            }
+                                        }
+                                    }
+                                    .block-content {
+                                        &.dropdown {
+                                            margin: 0;
+                                            position: absolute;
+                                            right: 0;
+                                            top: 100%;
+                                            background: #ffffff;
+                                            z-index: 6;
+                                            width: 225px;
+                                            border: 1px solid #dddddd;
+                                            padding: 15px;
+                                            display: none;
+                                            .header-link-menu {
+                                                display: block;
+                                                .header {
+                                                    &.links {
+                                                        list-style: outside none none;
+                                                        margin: 0;
+                                                        padding: 0;
+                                                        text-align: left;
+                                                        > li {
+                                                            display: block;
+                                                            margin-bottom: 10px;
+                                                            a {
+                                                                color: @color-black-light;
+                                                                display: block;
+                                                                text-decoration: none;
+                                                                &:visited, &:focus, &:active {
+                                                                    color: @color-black-light;
+                                                                    text-decoration: none;
+                                                                }
+                                                                &:hover {
+                                                                    color: @theme-color;
+                                                                    text-decoration: none;
+                                                                }
+                                                            }
+                                                            span {
+                                                                color: @color-black-light;
+                                                                &:hover {
+                                                                    color: @theme-color;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .top-menu-block {
+                    .header-social-block {
+                        display: none !important;
+                    }
+                    .nav-sections {
+                        margin-bottom: 0;
+                        background: #ffffff;
+                        .navigation {
+                            background: transparent;
+                            > ul {
+                                padding: 0;
+                                li {
+                                    &.level0 {
+                                        padding-top: 0;
+                                        padding-bottom: 0;
+                                        border-color: #e1e1e1;
+                                        &:first-child {
+                                            border-top: none;
+                                        }
+                                        .row {
+                                            margin: 0 !important;
+                                        }
+                                        > a {
+                                            &.level-top {
+                                                color: @color-black-light;
+                                                font-size: 14px;
+                                                font-weight: 700;
+                                                overflow-wrap: break-word;
+                                                padding: 10px 36px 10px 15px;
+                                                text-transform: uppercase;
+                                                > span {
+                                                    margin-left: 0 !important;
+                                                }
+                                                &:active, &:visited, &:focus {
+                                                    color: @color-black-light;
+                                                }
+                                                &:hover {
+                                                    color: @theme-color;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                                &.ui-state-focus {
+                                                    color: @theme-color;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                                &.ui-state-active {
+                                                    color: @theme-color;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                                &:after {
+                                                    right: 7px;
+                                                    top: -3px;
+                                                    font-size: 34px;
+                                                }
+                                            }
+                                        }
+                                        &.active {
+                                            > a {
+                                                &.level-top {
+                                                    color: @theme-color;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                        }
+                                        &.has-active {
+                                            > a {
+                                                &.level-top {
+                                                    color: @theme-color;
+                                                    background: transparent;
+                                                    border: none;
+                                                }
+                                            }
+                                        }
+                                        ul, div {
+                                            &.submenu {
+                                                border: none;
+                                                li {
+                                                    position: relative;
+                                                    > a {
+                                                        position: relative;
+                                                        color: @color-black-light;
+                                                        padding: 9px 0 9px 15px;
+                                                        font-size: 13px;
+                                                        font-weight: 700;
+                                                        text-transform: uppercase;
+                                                        background: #f8f8f8;
+                                                        &:visited, &:active, &:focus {
+                                                            color: @color-black-light;
+                                                        }
+                                                        > span {
+                                                            margin-left: 0 !important;
+                                                        }
+                                                        &:hover {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                        &.ui-state-focus {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                        &.ui-state-active {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                    }
+                                                    &.active {
+                                                        > a {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                    }
+                                                    &.has-active {
+                                                        > a {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+
+                                                        }
+                                                    }
+                                                }
+                                                .subchildmenu {
+                                                    padding-left: 0;
+                                                    > li {
+                                                        border-top: 1px solid #e1e1e1;
+                                                        > a {
+                                                            padding-left: 25px;
+                                                        }
+                                                        .subchildmenu {
+                                                            > li {
+                                                                > a {
+                                                                    padding-left: 35px;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.staticwidth {
+                                        ul, div {
+                                            &.submenu {
+                                                border: none;
+                                                li {
+                                                    margin-bottom: 0;
+                                                    position: relative;
+                                                    > a {
+                                                        position: relative;
+                                                        color: @color-black-light;
+                                                        padding: 9px 0 9px 15px;
+                                                        font-size: 13px;
+                                                        background: #f8f8f8;
+                                                        font-weight: 700;
+                                                        text-transform: uppercase;
+                                                        &:visited, &:active, &:focus {
+                                                            color: @color-black-light;
+                                                        }
+                                                        > span {
+                                                            margin-left: 0 !important;
+                                                        }
+                                                        &:hover {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                        &.ui-state-focus {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                        &.ui-state-active {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                    }
+                                                    &.active {
+                                                        > a {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                    }
+                                                    &.has-active {
+                                                        > a {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                    }
+                                                    &.level1 {
+                                                        > a {
+                                                            > span {
+                                                                &:after {
+                                                                    display: none;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                .subchildmenu {
+                                                    padding-left: 0;
+                                                    > li {
+                                                        border-top: 1px solid #e1e1e1;
+                                                        > a {
+                                                            padding-left: 25px;
+                                                        }
+                                                        .subchildmenu {
+                                                            > li {
+                                                                > a {
+                                                                    padding-left: 35px;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.fullwidth {
+                                        ul, div {
+                                            &.submenu {
+                                                border: none;
+                                                li {
+                                                    margin-bottom: 0;
+                                                    position: relative;
+                                                    > a {
+                                                        position: relative;
+                                                        color: @color-black-light;
+                                                        padding: 9px 0 9px 15px;
+                                                        font-size: 13px;
+                                                        font-weight: 700;
+                                                        text-transform: uppercase;
+                                                        background: #f8f8f8;
+                                                        &:visited, &:active, &:focus {
+                                                            color: @color-black-light;
+                                                        }
+                                                        > span {
+                                                            margin-left: 0 !important;
+                                                        }
+                                                        &:hover {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                        &.ui-state-focus {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                        &.ui-state-active {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                    }
+                                                    &.active {
+                                                        > a {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                    }
+                                                    &.has-active {
+                                                        > a {
+                                                            color: @theme-color;
+                                                            background: transparent;
+                                                            border: none;
+                                                        }
+                                                    }
+                                                    &.level1 {
+                                                        > a {
+                                                            > span {
+                                                                &:after {
+                                                                    display: none;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                .subchildmenu {
+                                                    padding-left: 0;
+                                                    > li {
+                                                        border-top: 1px solid #e1e1e1;
+                                                        > a {
+                                                            padding-left: 25px;
+                                                        }
+                                                        .subchildmenu {
+                                                            > li {
+                                                                > a {
+                                                                    padding-left: 35px;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 639px) {
+    .page-wrapper {
+        .page-header {
+            &.header-type2 {
+                .header {
+                    &.content {
+                        .minicart-wrapper {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width: 479px) {
+    .page-wrapper {
+        .page-header {
+            &.header-type2 {
+                .header {
+                    &.content {
+                        .logo-block {
+                            max-width: 165px;
+                            height: 55px;
+                            .logo {
+                                padding-left: 30px;
+                            }
+                            .nav-toggle {
+                                left: 15px;
+                                top: 14px;
+                                &:before {
+                                    font-size: 24px;
+                                }
+                            }
+                        }
+                        #search-tog-block {
+                            margin: 0 20px 0 0;
+                            #search-tog-btn {
+                                > a {
+                                    font-size: 18px;
+                                    line-height: 34px;
+                                    margin: 6px 0 14px;
+                                }
+                            }
+                        }
+                        .minicart-wrapper {
+                            .action {
+                                &.showcart {
+                                    margin: 6px 0 14px;
+                                    min-width: 20px;
+                                    &:before {
+                                        font-size: 18px;
+                                        line-height: 30px;
+                                    }
+                                    &:hover {
+                                        &:before {
+                                            font-size: 18px;
+                                            line-height: 30px;
+                                        }
+                                    }
+                                    &.active {
+                                        &:before {
+                                            font-size: 18px;
+                                            line-height: 30px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .top-links {
+                            .header-links {
+                                margin-right: 20px;
+                                #header-links-main {
+                                    #links-tog-btn {
+                                        > a {
+                                            font-size: 18px;
+                                            line-height: 34px;
+                                            margin: 6px 0 14px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 639px) {
+    .page-wrapper {
+        .page-header {
+            &.header-type1 {
+                .logo {
+                    max-width: 120px;
+                }
+                .block-search {
+                    margin-top: 0;
+                    .field {
+                        &.search {
+                            .label {
+                                &:before {
+                                    font-size: 30px;
+                                    line-height: 34px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.block-search .action.search.disabled, .block-search .action.search[disabled], fieldset[disabled] .block-search .action.search {
+    opacity: 1;
+}

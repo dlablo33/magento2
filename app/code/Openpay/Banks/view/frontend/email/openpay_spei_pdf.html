@@ -1,0 +1,20 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Tu recibo de pago"}} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>    
+    <tr class="email-summary">
+        <td>
+            <h1>{{var title}}</h1>     
+            <p>A continuación encontrarás como archivo adjunto a este correo las instrucciones a seguir para realizar tu pago desde tu banca electrónica.</p>
+        </td>
+    </tr>    
+</table>
+
+{{template config_path="design/email/footer_template"}}

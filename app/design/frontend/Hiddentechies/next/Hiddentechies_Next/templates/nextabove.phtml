@@ -1,0 +1,6 @@
+<?php
+$helper = $this->helper('Hiddentechies\Next\Helper\Data');
+$ishome = $helper->getIsHome();
+if ($ishome) {
+    echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('next-above')->toHtml();
+}

@@ -1,0 +1,327 @@
+<?php
+/**
+ * Template for displaying new products widget
+ *
+ * @var $block \Magento\Catalog\Block\Product\Widget\NewWidget
+ */
+if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())) {
+    $type = 'widget-new-list';
+
+    $mode = 'list';
+
+    $image = 'new_products_content_widget_list';
+    $title = __('New Products');
+    $items = $block->getProductCollection()->getItems();
+    $_helper = $this->helper('Magento\Catalog\Helper\Output');
+
+    $showWishlist = true;
+    $showCompare = true;
+    $showCart = true;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::DEFAULT_VIEW;
+    $description = true;
+}
+?>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$moduleManager = $objectManager->get('\Magento\Framework\Module\Manager');
+$lazyLoadEnable = '';
+if ($moduleManager->isEnabled('Lof_LazyLoad') && $moduleManager->isOutputEnabled('Lof_LazyLoad')) {
+    $lazyLoadHelper = $this->helper('Lof\LazyLoad\Helper\Data');
+    $loadingIcon = $lazyLoadHelper->getConfig('general/loadingIcon');
+    $imgSrc = $lazyLoadHelper->getMediaUrl() . 'lof/lazyload/' . $loadingIcon;
+    $lazyLoadEnable = $lazyLoadHelper->isEnable();
+}
+
+$helper = $this->helper('Hiddentechies\Productlayoutmanager\Helper\Data');
+$imageHelper = $this->helper('Magento\Catalog\Helper\Image');
+
+//timer settings
+$timerEnabled = $helper->getConfigVal('productlayoutsettings/product_list/timer_enabled_widgets');
+$timerFormat = $helper->getConfigVal('productlayoutsettings/product_list/timer_format');
+
+//image settings
+$hoverImage = 'product_page_image_small';
+$alternativeImage = $helper->getConfigVal('productlayoutsettings/product_list/alternative_image');
+$aspectRatio = $helper->getConfigVal('productlayoutsettings/product_list/aspect_ratio');
+$imageWidth = $helper->getConfigVal('productlayoutsettings/product_list/image_width');
+$imageHeight = $helper->getConfigVal('productlayoutsettings/product_list/image_height');
+$addBorder = $helper->getConfigVal('productlayoutsettings/product_list/add_border');
+
+//product label settings
+$showNewLabel = $helper->getConfigVal('productlayoutsettings/product_list/enable_new');
+$newLabelText = $helper->getConfigVal('productlayoutsettings/product_list/new_label_text');
+$showSaleLabel = $helper->getConfigVal('productlayoutsettings/product_list/enable_sale');
+$saleLabelText = $helper->getConfigVal('productlayoutsettings/product_list/sale_label_text');
+
+//product content settings
+$enableRating = $helper->getConfigVal('productlayoutsettings/product_list/enable_rating');
+$enablePrice = $helper->getConfigVal('productlayoutsettings/product_list/enable_price');
+
+//product action buttons settings
+$showActionButtons = $helper->getConfigVal('productlayoutsettings/product_list/show_action_buttons');
+$enableWishlist = $helper->getConfigVal('productlayoutsettings/product_list/enable_wishlist');
+$enableCompare = $helper->getConfigVal('productlayoutsettings/product_list/enable_compare');
+$enableCart = $helper->getConfigVal('productlayoutsettings/product_list/enable_cart');
+
+//product columns settings
+$enableSlider = $block->getEnableSlider();
+$productColumnsLarge = $helper->getConfigVal('productlayoutsettings/product_list/widget_list_product_columns_large');
+$productColumnsMedium = $helper->getConfigVal('productlayoutsettings/product_list/widget_list_product_columns_medium');
+$productColumnsSmall = $helper->getConfigVal('productlayoutsettings/product_list/widget_list_product_columns_small');
+$productColumnsExtraSmall = $helper->getConfigVal('productlayoutsettings/product_list/widget_list_product_columns_extra_small');
+?>
+<?php if ($exist): ?>
+    <div style="margin-bottom: 0;" class="top-pad <?php if ($enableSlider) { ?> bot-pad <?php } ?> block widget block-new-products <?php /* @escapeNotVerified */ echo $mode; ?>">
+        <div class="section-title">
+            <h2>
+                <span>
+                    <?php /* @escapeNotVerified */ echo $title; ?>
+                </span>
+            </h2>
+        </div>
+        <div class="block-content">
+            <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>
+            <div class="products-<?php /* @escapeNotVerified */ echo $mode; ?> <?php /* @escapeNotVerified */ echo $mode; ?>">
+                <div class="outer-row">
+                    <ol style="margin-bottom: 0;" class="middle-btns products list items product-items <?php if ($enableSlider) { ?> product-widget-slider product-widget-slider-new-list <?php } ?> <?php /* @escapeNotVerified */ echo $type; ?>">
+                        <?php $iterator = 1; ?>
+                        <?php foreach ($items as $_item): ?>
+                            <?php if ($enableSlider) { ?>
+                                <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="product-slider item product product-item">' : '</li><li class="product-slider item product product-item">' ?>
+                            <?php } else { ?>
+                                <?php echo($iterator++ == 1) ? '<li class="item product product-item">' : '</li><li class="item product product-item">' ?>
+                            <?php } ?>
+                            <div class="product-item-info">
+                                <div class="product-img-main">
+                                    <a <?php if ($addBorder) { ?> class="with-border" <?php } ?> href="<?php echo $_item->getProductUrl(); ?>" tabindex="-1">
+                                        <?php
+                                        if ($aspectRatio) {
+                                            $productImage = $imageHelper->init($_item, $image)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($imageWidth);
+                                        } else {
+                                            $productImage = $imageHelper->init($_item, $image)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepTransparency(TRUE)->keepFrame(TRUE)->resize($imageWidth, $imageHeight);
+                                        }
+                                        $productImageUrl = $productImage->getUrl();
+                                        ?>
+                                        <?php if ($lazyLoadEnable) { ?>
+                                            <img class="product-image-photo lof-lazy default_image" src="<?php echo $imgSrc; ?>" data-src="<?php echo $productImageUrl; ?>" alt="<?php echo $productImage->getLabel(); ?>"/>
+                                            <noscript><img class="product-image-photo lof-lazy default_image" src="<?php echo $productImageUrl; ?>" alt="<?php echo $productImage->getLabel(); ?>"/></noscript>
+                                        <?php } else { ?>
+                                            <img class="product-image-photo default_image" src="<?php echo $productImageUrl; ?>" alt="<?php echo $productImage->getLabel(); ?>"/>
+                                        <?php } ?>
+                                        <?php if ($alternativeImage) { ?>
+                                            <?php
+                                            if ($aspectRatio) {
+                                                $productHoverImage = $imageHelper->init($_item, $hoverImage)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($imageWidth);
+                                            } else {
+                                                $productHoverImage = $imageHelper->init($_item, $hoverImage)->constrainOnly(TRUE)->keepAspectRatio(TRUE)->keepTransparency(TRUE)->keepFrame(TRUE)->resize($imageWidth, $imageHeight);
+                                            }
+                                            $productHoverImageUrl = $productHoverImage->getUrl();
+                                            ?>
+                                            <?php if ($lazyLoadEnable) { ?>
+                                                <img class="product-image-photo lof-lazy hoverimg" src="<?php echo $imgSrc; ?>" data-src="<?php echo $productHoverImageUrl; ?>" alt="<?php echo $productHoverImage->getLabel(); ?>"/>
+                                            <?php } else { ?>
+                                                <img class="product-image-photo hoverimg" src="<?php echo $productHoverImageUrl; ?>" alt="<?php echo $productHoverImage->getLabel(); ?>"/>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </a>
+                                    <?php
+                                    if ($showNewLabel) {
+                                        $fromDate = $_item->getNewsFromDate();
+                                        $toDate = $_item->getNewsToDate();
+
+                                        if (isset($fromDate) && isset($toDate)) {
+                                            $fromDate = strtotime($fromDate);
+                                            $toDate = strtotime($toDate);
+                                            $now = strtotime(date("Y-m-d h:m:s"));
+
+                                            if ($fromDate <= $now && $now <= $toDate) {
+                                                ?>
+                                                <span class="new-label"><?php echo $newLabelText; ?></span>
+                                                <?php
+                                            }
+                                        }
+                                    }
+
+                                    if ($showSaleLabel) {
+                                        $special_price = number_format((float)$_item->getSpecialPrice(), 2);
+                                        $regular_price = number_format((float)$_item->getPrice(), 2);
+                                        if (isset($special_price) && $special_price > 0) {
+                                            if ($special_price < $regular_price) {
+                                                $fromSpecialDate = $_item->getSpecialFromDate();
+                                                $toSpecialDate = $_item->getSpecialToDate();
+
+                                                if (isset($fromSpecialDate) && isset($toSpecialDate)) {
+                                                    $fromSpecialDate = strtotime($fromSpecialDate);
+                                                    $toSpecialDate = strtotime($toSpecialDate);
+                                                    $now = strtotime(date("Y-m-d h:m:s"));
+
+                                                    if ($fromSpecialDate <= $now && $now <= $toSpecialDate) {
+                                                        ?>
+                                                        <span class="sale-label"><?php echo $saleLabelText; ?></span>
+                                                        <?php
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                                <div class="product details product-item-details">
+                                    <strong class="product-item-name">
+                                        <a title="<?php echo $block->escapeHtml($_item->getName()) ?>"
+                                           href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>"
+                                           class="product-item-link">
+                                               <?php echo $block->escapeHtml($_item->getName()) ?>
+                                        </a>
+                                    </strong>
+                                    <?php if ($enableRating) { ?>
+                                        <?php if ($templateType): ?>
+                                            <?php echo $block->getReviewsSummaryHtml($_item, $templateType, TRUE) ?>
+                                        <?php endif; ?>
+                                    <?php } ?>
+                                    <?php if ($enablePrice) { ?>
+                                        <?php echo $block->getProductPriceHtml($_item, $type); ?>
+                                    <?php } ?>
+
+                                    <?php if ($showWishlist || $showCompare || $showCart): ?>
+                                        <?php if ($showActionButtons) { ?>
+                                            <div class="product-item-inner">
+                                                <div class="product-item-actions">
+                                                    <?php if ($enableCart) { ?>
+                                                        <?php if ($showCart): ?>
+                                                            <div class="actions-primary">
+                                                                <?php if ($_item->isSaleable()): ?>
+                                                                    <?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)): ?>
+                                                                        <button class="action tocart primary"
+                                                                                data-mage-init='{"redirectUrl":{"url":"<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($_item) ?>"}}'
+                                                                                type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                                            <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+                                                                        </button>
+                                                                    <?php else: ?>
+                                                                        <?php
+                                                                        $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+                                                                        $postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()])
+                                                                        ?>
+                                                                        <button class="action tocart primary"
+                                                                                data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
+                                                                                type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                                            <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+                                                                        </button>
+                                                                    <?php endif; ?>
+                                                                <?php else: ?>
+                                                                    <?php if ($_item->getIsSalable()): ?>
+                                                                        <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+                                                                    <?php else: ?>
+                                                                        <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+                                                                    <?php endif; ?>
+                                                                <?php endif; ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php } ?>
+                                                </div>
+                                                <?php if ($showWishlist || $showCompare): ?>
+                                                    <div class="actions-secondary" data-role="add-to-links">
+                                                        <?php if ($enableWishlist) { ?>
+                                                            <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
+                                                                <a href="#"
+                                                                   data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($_item); ?>'
+                                                                   class="action towishlist" data-action="add-to-wishlist"
+                                                                   title="<?php /* @escapeNotVerified */ echo __('Add to Wish List') ?>">
+                                                                    <span><?php /* @escapeNotVerified */ echo __('Add to Wish List') ?></span>
+                                                                </a>
+                                                            <?php endif; ?>
+                                                        <?php } ?>
+                                                        <?php if ($enableCompare) { ?>
+                                                            <?php if ($block->getAddToCompareUrl() && $showCompare): ?>
+                                                                <?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+                                                                <a href="#" class="action tocompare"
+                                                                   title="<?php /* @escapeNotVerified */ echo __('Add to Compare') ?>"
+                                                                   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_item); ?>'>
+                                                                    <span><?php /* @escapeNotVerified */ echo __('Add to Compare') ?></span>
+                                                                </a>
+                                                            <?php endif; ?>
+                                                        <?php } ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php } ?>
+                                    <?php endif; ?>
+                                    <?php
+                                    if ($timerEnabled) {
+                                        $timerRandom = rand(10, 100000);
+                                        $productSpecialPrice = number_format((float)$_item->getSpecialPrice(), 2);
+                                        $productRegularPrice = number_format((float)$_item->getPrice(), 2);
+                                        if (isset($productSpecialPrice) && $productSpecialPrice > 0) {
+                                            if ($productSpecialPrice < $productRegularPrice) {
+                                                $productFromSpecialDate = $_item->getSpecialFromDate();
+                                                $ProductToSpecialDate = $_item->getSpecialToDate();
+                                                if (isset($productFromSpecialDate) && isset($ProductToSpecialDate)) {
+                                                    $productFromSpecialDate = strtotime($productFromSpecialDate);
+                                                    $ProductToSpecialDate = strtotime($ProductToSpecialDate);
+                                                    $nowDate = strtotime(date("Y-m-d h:m:s"));
+                                                    if ($productFromSpecialDate <= $nowDate && $nowDate <= $ProductToSpecialDate) {
+                                                        $ProductToSpecialDateSec = date('Y-m-d h:m:s', $ProductToSpecialDate);
+                                                        ?>
+                                                        <div class="timer-wrapper-outer">
+                                                            <div class="timer" id="countdown-<?php echo $timerRandom; ?>"></div>
+                                                        </div>
+                                                        <script>
+                                                            require([
+                                                                "jquery", "countdown.timer.min"
+                                                            ], function() {
+                                                                var myDate = new Date("<?php echo $ProductToSpecialDateSec; ?>");
+                                                                jQuery("#countdown-<?php echo $timerRandom; ?>").countdown(myDate, function(event) {
+                                                                    jQuery(this).html(
+                                                                            event.strftime(
+                                                                                    '<?php echo $timerFormat; ?>'
+                                                                                    )
+                                                                            );
+                                                                });
+                                                            });
+                                                        </script>
+                                                        <?php
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    <?php if ($description): ?>
+                                        <div class="product-item-description">
+                                            <?php /* @escapeNotVerified */ echo $_helper->productAttribute($_item, $_item->getShortDescription(), 'short_description') ?>
+                                            <a title="<?php echo $block->escapeHtml($_item->getName()) ?>"
+                                               href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>"
+                                               class="action more"><?php /* @escapeNotVerified */ echo __('Learn More') ?></a>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <?php echo($iterator == count($items) + 1) ? '</li>' : '' ?>
+                        <?php endforeach ?>
+                    </ol>
+                </div>
+            </div>
+            <?php echo $block->getPagerHtml() ?>
+        </div>
+    </div>
+    <?php if ($enableSlider) { ?>
+        <script type="text/javascript" xml="space">
+            require(['jquery', 'themeowlcarousel'], function() {
+                jQuery(document).ready(function() {
+                    jQuery(".product-widget-slider-new-list").owlCarousel({
+                        items: <?php echo $productColumnsLarge; ?>,
+                        itemsDesktop: [1199, <?php echo $productColumnsMedium; ?>],
+                        itemsDesktopSmall: [991, <?php echo $productColumnsMedium; ?>],
+                        itemsTablet: [767, <?php echo $productColumnsSmall; ?>],
+                        itemsTabletSmall: [639, <?php echo $productColumnsSmall; ?>],
+                        itemsMobile: [479, <?php echo $productColumnsExtraSmall; ?>],
+                        pagination: false,
+                        navigationText: ["<div class='prev-arrow'><i class='fa fa-long-arrow-left'></i></div>", "<div class='next-arrow'><i class='fa fa-long-arrow-right'></div>"],
+                        navigation: true,
+                    });
+                    jQuery('.product-widget-slider-new-list .product-slider').show();
+                });
+            });
+        </script>
+    <?php } ?>
+<?php endif; ?>

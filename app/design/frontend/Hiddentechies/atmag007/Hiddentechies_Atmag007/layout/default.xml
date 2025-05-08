@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Hiddentechies_Atmag007::css/owl.carousel.css"/>
+        <css src="Hiddentechies_Atmag007::css/owl.theme.css"/>
+        <css src="Hiddentechies_Atmag007::css/owl.transitions.css"/>
+        <css src="Hiddentechies_Atmag007::css/fancybox/jquery.fancybox.css"/>
+        <css src="Hiddentechies_Atmag007::css/font-awesome.min.css"/>
+    </head>
+    <body>
+        <referenceContainer name="head.additional">
+            <block class="Magento\Framework\View\Element\Template" name="theme_head" template="Hiddentechies_Atmag007::customcss/customcss.phtml" before="-"/>
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Newsletter\Block\Subscribe" name="newsletter.subscribe.popup" as="newsletter.subscribe.popup" before="-" template="Hiddentechies_Atmag007::newsletter/newsletterpopup.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" as="home.content.above" name="home.content.above" template="Hiddentechies_Atmag007::content/home-content-above.phtml" before="main.content" />
+            <block class="Magento\Framework\View\Element\Template" as="home.content.below" name="home.content.below" template="Hiddentechies_Atmag007::content/home-content-below.phtml" after="main.content" />
+        </referenceContainer>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="theme_custom_head" template="Hiddentechies_Atmag007::head.phtml" before="-"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="scroll.top" template="Hiddentechies_Atmag007::scrolltop.phtml" />
+        </referenceContainer>
+    </body>
+</page>

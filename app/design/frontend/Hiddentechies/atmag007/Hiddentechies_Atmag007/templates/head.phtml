@@ -1,0 +1,40 @@
+<?php
+$helper = $this->helper('Hiddentechies\Atmag007\Helper\CssSetting');
+?>
+<?php
+$settingsFile = $helper->getSettingsFile();
+if ($settingsFile) {
+    ?>
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo $settingsFile; ?>">
+<?php }
+?>
+<?php
+$enable = $helper->getConfigValue('themesettings/addthis/enable');
+$pubid = $helper->getConfigValue('themesettings/addthis/pubid');
+
+if ($enable) {
+    ?>
+    <div class="addthis_sharing_toolbox"></div>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $pubid; ?>" async="async"></script>
+<?php } ?>
+<?php
+$customJs = $helper->getConfigValue('themesettings/customjs/custom_js');
+?>
+<script>
+    require(['jquery'], function() {
+<?php echo $customJs; ?>
+    });
+</script>
+
+
+<style>
+    .cms-about #maincontent.page-main {
+        max-width: 100%;
+        padding: 0; 
+    }
+    .about-wrapper {
+        float: left;
+        width: 100%;
+        clear: both;
+    }
+</style>

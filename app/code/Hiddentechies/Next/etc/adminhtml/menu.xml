@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Hiddentechies_Next::next" title="Next" module="Hiddentechies_Next" sortOrder="65" resource="Hiddentechies_Next::next"/>
+        <add id="Hiddentechies_Next::nextsettings" title="Configuration" module="Hiddentechies_Next" sortOrder="20" parent="Hiddentechies_Next::next" action="adminhtml/system_config/edit/section/nextsettings" resource="Hiddentechies_Next::next"/>
+    </menu>
+</config>
